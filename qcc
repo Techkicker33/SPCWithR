@@ -1,0 +1,4 @@
+# qcc packages
+
+install.packages("qcc")
+library(qcc)
