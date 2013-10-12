@@ -1,4 +1,3 @@
-
 # R package spc provides
 
 # xcusum.ad 	- steady-state ARLs of CUSUM charts
