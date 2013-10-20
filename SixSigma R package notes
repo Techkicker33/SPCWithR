@@ -1,7 +1,36 @@
 SixSigma: Six Sigma Tools for Quality and Process Improvement
+%--------------------------------------------------------------------------------------%
+
+Introduction
+
+SixSigma is an R package developed to deal with Six Sigma projects with R. 
+We are just now working in new functions in order to cover a wide range of activities for any Six Sigma Project. 
+Install SixSigma package, and run example(SixSigma) to see the currently developed functions in action. 
+See the SixSigma documentation to see details of the functions, or type (?SixSigma) in an R session. 
+This is the first stage of a broader project, that will include many functions and documentation as well, 
+aimed at carrying out a whole Six Sigma:
+
+Define
+Measurement
+Analyze
+Improve
+Control
+
+%--------------------------------------------------------------------------------------%
+Including functions for Control Charts, Pareto Charts, Design of Experiments, Factorial Analysis, 
+Response Surface, and so on.
+
+%--------------------------------------------------------------------------------------%
+
+\subsection{Authors}
+
+The package is being developed by Emilio L. Cano, Andrés Redchuk and Javier M. Moguerza, from the Department of Statistics and Operations Research at Rey Juan Carlos University (Madrid).
 
 This package contains functions and utilities to perform Statistical Analyses in the Six Sigma way. 
 Through the DMAIC cycle (Define, Measure, Analyze, Improve, Control), you can manage several 
 Quality Management studies: Gage R&R, Capability Analysis, Control Charts, Loss Function Analysis, etc. 
+%--------------------------------------------------------------------------------------%
 
+
+\subsection{Data Sets}
 Data frames used in the book "Six Sigma with R" (Springer, 2012) are also included in the package.
