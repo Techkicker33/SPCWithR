@@ -11,11 +11,13 @@ See the SixSigma documentation to see details of the functions, or type (?SixSig
 This is the first stage of a broader project, that will include many functions and documentation as well, 
 aimed at carrying out a whole Six Sigma:
 
-Define
-Measurement
-Analyze
-Improve
-Control
+\begin{itemize}
+\item Define
+\item Measurement
+\item Analyze
+\item Improve
+\item Control
+\end{itemize}
 
 %--------------------------------------------------------------------------------------%
 Including functions for Control Charts, Pareto Charts, Design of Experiments, Factorial Analysis, 
