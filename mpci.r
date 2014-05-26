@@ -7,3 +7,13 @@
  USL <- c(36, 80, 20, 16, 140)
  alpha <- 0.0027
  mpci(index = "shah", x, LSL, USL, Target, alpha)
+
+#########################################
+
+ data("dataset2")
+ x <- dataset2
+ alpha <- 0.0027
+ Target <-c(177,53)
+ LSL <- c(112.7, 32.7)
+ USL <- c(241.3,73.3)
+ mpci(index = "taam", x, LSL, USL, graphic = TRUE)
