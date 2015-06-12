@@ -1,0 +1,32 @@
+
+### The spc package
+ 
+<hr>
+
+```{r}
+
+library(spc)
+
+```
+<hr>
+
+* D
+* M
+* A
+* I
+* C
+
+<hr>
+
+### Control Charts
+
+Centre-Line
+
+Action lines
+Warning lines
+
+<hr>
+
+### Six Sigma package
+
+<hr>

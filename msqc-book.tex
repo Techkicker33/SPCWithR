@@ -1,0 +1,117 @@
+
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc}
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} 
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape}
+
+\begin{document}
+
+\tableofcontents
+\newpage
+
+\section{Motivation of Talk}
+
+% Introduction fro Book
+
+\begin{itemize}
+\item The intensive use of an automatic data acquisition systems and the use of
+on-line computers for process monitoring have led to an increased occurrence of
+industrial processes with two or more correlated quality characteristics, in which
+the statistical process control and the capability analysis should be performed using
+multivariate methodologies. (book)
+\item Unfortunately, despite the availability of increased computing capabilities, in
+the Multivariate Statistical Quality Control (MSQC) framework the software
+solutions are limited or restricted in their level of success and ease of use for
+dealing with the problems of industry or promoting academic instruction.
+\end{itemize}
+
+\newpage
+\section{Multivariate Control Charts}
+
+\begin{itemize}
+\item With the enhancements in data acquisition systems it is usual to deal with processes
+with more than one correlated quality characteristic to be monitored. 
+\item A common
+practice is to control the stability of the process using univariate control charts.
+\item This
+practice increases the probability of false alarm of special cause of variation.
+\end{itemize}
+\newpage
+
+\begin{itemize}
+\item The control ellipsoid or $\chi^2$ control chart
+\item The $T^2$ or Hotelling chart
+\item The Multivariate Exponentially Weighted Moving Average (MEWMA) chart
+\item The Multivariate Cumulative Sum (MCUSUM) chart
+\item The chart based on Principal Components Analysis (PCA)
+\end{itemize}
+
+
+\newpage
+
+\section{Hotelling $T^2$ Control Chart (Phase I)}
+\begin{itemize}
+\item The origin of the $T^2$ control chart dates back to the pioneer works of Harold Hotelling
+who applied this method to the bombsight problem in Second World War.
+\item  The
+Hotelling (1947) procedure has become without doubt the most applied in multivariate
+process control and it is the multivariate analogous of the Shewhart control chart.
+\item For that reason, it is also known as multivariate Shewhart control chart.
+\item Often in practice the parameters $\mu$ and $\Sigma$ are unknown and consequently must be estimated across the unbiased estimators $\bar{x}$ and S.
+\end{itemize}
+
+\newpage
+
+\newpage
+\section{Graphical Methods}
+\begin{itemize}
+\item The first section of this chapter will examine two graphical techniques: histogram
+and Q-Q plot that facilitate the assumption of normality.
+\item 
+Histogram is a graphical technique that allows a visual summary of the data. It
+provides information about the center, the spread, the skewness, and the existence
+of outliers. (NIST / SEMATECH e-Handbook of Statistical Methods).
+\item
+A visual inspection of a histogram permits to establish an initial hypothesis of
+the distribution; in this case a bell-shaped is desired.
+\item
+Although histograms are basically used in univariate scenarios, univariate
+normality per se does not imply multivariate normality; if a departure from normality
+is founded in individual variables, this has a negative effect in the
+multinormality.
+\end{itemize}
+\end{document}

@@ -1,0 +1,186 @@
+
+
+MSQC Chapter 3
+
+%-----------------------------------------%
+
+% Section 3.1 Page 64
+
+\section{The \texttt{mpci} function}
+
+General Function that can implement at measure the process capability.
+
+\begin{description}
+\item[\texttt{shah}] - shariari et al 
+\item[\texttt{taam}] - Taam et al (1993)
+\item[\texttt{pan}] - Pan \& Lee (2010)
+\item[\texttt{xelaki}] - 
+\item[\texttt{wang}]
+\end{description}
+
+Three Compulsory Elements:
+\begin{enumerate}
+\item $X$ matrix or dataframe
+\item $LSL$ Lower Specification Limit
+\item $USL$ Upper Specification Limit
+\end{enumerate}
+
+
+\subsection{Using the \textit{RGL} package}  %Page 64
+
+%-------------------------------------------%
+\section{Multivaraite Process Capability Vector}
+
+Hubele et Al 
+
+\[ CP_m PV LI \]
+It is based on the assumption that the process follows a multivariate normal distribution.
+
+Process Region - Graphic
+
+%-------------------------------------------%
+
+% Page 66
+
+\[  (X - \mu)^{\prime}(\Sigma)^{-1}(X - \mu) = \chi^2_{\alpha,p}\]
+
+LI compares the location of the modified process region and the process tolerance, showing when
+any part of the process region falls outside the tolerance region
+
+
+
+\[  LI = \begin{cases}1 \\ 0 \end{cases} \]
+
+%-------------------------------------------%
+
+\begin{framed}
+\begin{verbatim}
+library(mpci)
+data(dowel1)
+
+LSL <- c(0.47,0.90)
+USL <- c(0.51,1.10)
+Target <- c(0.50,0.10)
+
+mpci(index="shah",dowel1,LSL,USL,Target,graph=TRUE)
+
+\end{verbatim}
+\end{framed}
+
+%------------------------------------------%
+
+\section{Multivariate Capability Indices} % Page 69
+%Section 3.3
+
+Proposed by Taam et al (1993)
+
+$MC_{pm}$ is the ratio of the ellipsoids.
+
+\begin{framed}
+\begin{verbatim}
+library(mpci)
+data(dowel1)
+
+LSL <- c(0.47,0.90)
+USL <- c(0.51,1.10)
+Target <- c(0.50,0.10)
+
+mpci(index="taam",dowel1,LSL,USL,Target,graph=TRUE)
+
+\end{verbatim}
+\end{framed}
+
+\[  MC_{pm} = \frac{C_p}{D} \]
+
+\[ C_p = frac{\mbox{val.(tolerance region)}}{val.(estimated process region)} \]
+
+
+%-------------------------------------------%
+%PAge 74
+\begin{verbatim}
+
+p <- 3
+LSL <- c(0.60,0.30,49.00)
+USL <- c(1.40,1.70,51.00)
+Target <- c(1.00,1.00,50.00)
+
+carbon <- matrix(c(carbon1[,1,],carbon1[,2,],carbon1[,3,]),ncol=3)
+LPL <- proc.reg(carbon,alpha=0.01)$LPL
+UPL <- proc.reg(carbon,alpha=0.01)$UPL
+
+\end{verbatim}
+
+
+
+\begin{verbatim}
+carbon <- matrix(c(carbon1[,1,], carbon1[,2,], carbon1[,3,]),ncol = 3)
+LPL <- proc.reg(carbon, alpha = 0.01)$LPL
+UPL <- proc.reg(carbon, alpha = 0.01)$UPL
+x.jk <- apply(carbon1,1:2,mean)
+LPLm <- proc.reg(x.jk, alpha = 0.01)$LPL
+UPLm <- proc.reg(x.jk, alpha = 0.01)$UPL
+Center <- (UPLm + LPLm) /2
+LSLm <- Target - (Target - LSL) * (Center - LPLm) / (Center - LPL)
+USLm <- Target + (Target - LSL) * (Center - LPLm) / (Center - LPL)
+CpM <- (prod(USLm - LSLm) / prod(UPL - LPL)) ^ (1 / p)
+\end{verbatim}
+%-------------------------------------------%
+% Page 75
+
+\begin{verbatim}
+
+library(rgl)
+larg.ellip(LSLm, USLm, n = 15, 
+   add = FALSE, box = FALSE ,
+   xlim = c(0.80,1.150),ylim = c(0.65,1.5), zlim = c(49.5,50.5), 
+   xlab = "", ylab = "",zlab = "", 
+   col = "#D55E00", alpha = 0.2) 
+
+plot3d(ellipse3d(cov(x.jk), 
+   center = colMeans(x.jk), level = 0.99), 
+   type = "wire", col = 3, 
+   alpha = 0.2, add = TRUE)
+
+plot3d(x.jk, size = 4, cex = 2, box = FALSE, add = TRUE),
+
+prism(LSLm, USLm, add = TRUE,col = "#D55E00")
+prism(LPLm, UPLm, add = TRUE,col = 3)
+\end{verbatim}
+
+The graph obtained allows to visualize it in three dimensions by moving through
+the axis. In this figure the external prism results in the tolerance region, and the
+modified tolerance region is represented in the gray ellipsoid. 
+
+On the other hand, the process region is shown in wire type with its respective 
+modified process region (the external prism that bounds the confidence ellipsoid).
+
+%------------------------------------------%
+%Page 80
+
+% PRINCIPAL COMPONENTS ANALYSIS
+
+There are many methods in order to decide how many principal components should be retained or used, with the aim to avoid the loss of significant
+information.
+
+Rencher (2002) proposed the next four methods and we add a fifth.
+%------------------------%
+
+Method 1 or Percentage: This technique guarantees at least the percent specified of
+Cumulative Proportion of explained variance. This is normally fixed on 80%.
+
+Method 2 or Average: The second method is based on retaining the principal
+components whose eigenvalues are greater than the average of the eigenvalues.
+
+Method 3 or Scree: The scree graph is a visual procedure that plots the eigenvalue
+size throughout the eigenvalue number. It allows to determine which components
+are significant apart from the straight line formed by the last eingenvalues.
+
+Method 4 or Bartlett (1954) Test: This method is a statistical test designed to ignore
+the principal components not significantly different from the rest and assumes
+multivariate normality. Usually this method produces a number of principal
+components larger than the former methods.
+
+Method 5 or Anderson (1963) Test: Another method widely used is the Anderson
+Test that differentiates also the principal components significantly different from
+the others
+%------------------------%

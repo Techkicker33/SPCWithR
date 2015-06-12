@@ -1,0 +1,64 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This file is a template using the "beamer" package to create slides for a talk or presentation
+% - Introducing another speaker.
+% - Talk length is about 2min.
+% - Style is ornate.
+
+% MODIFIED by Jonathan Kew, 2008-07-06
+% The header comments and encoding in this file were modified for inclusion with TeXworks.
+% The content is otherwise unchanged from the original distributed with the beamer package.
+
+\documentclass{beamer}
+%------------------------------------------------------------------------------------------%
+
+\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
+\usetheme{Warsaw}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+\setbeamersize{text margin left=0.5cm}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+%------------------------------------------------------------------------------------------%
+
+% http://en.wikipedia.org/wiki/DMAIC
+% http://www.goleansixsigma.com/dmaic-five-basic-phases-of-lean-six-sigma/
+
+
+\begin{document}
+%---------------------------%
+%--------------------------------------------------------------------%
+\section{\texttt{qualityTools} Package}
+\begin{frame}
+
+\frametitle{\texttt{qualityTools R} Package}
+\begin{itemize}
+\item This Package contains methods associated with the Define, Measure, Analyze, Improve and Control (i.e. DMAIC) cycle of the Six Sigma Quality Management methodology.
+\item It covers distribution fitting, normal and non-normal process capability indices, techniques for Measurement Systems Analysis especially gage capability indices and Gage Repeatability (i.e Gage RR) and Reproducibility studies, factorial and fractional factorial designs as well as response surface methods including the use of desirability functions. 
+\end{itemize}
+\end{frame}
+
+
+%--------------------------------------------------------------------%
+\begin{frame}
+\frametitle{\texttt{qualityTools R} Package}
+
+\begin{itemize}
+\item Improvement via Six Sigma is project based strategy that covers 5 phases (with \texttt{qcc})/: 
+\begin{description}
+\item[Define] - Pareto Chart; 
+\item[Measure] - Probability and QQ Plots, Process Capability Indices for various distributions and Gage RR 
+\item[Analyze] - Pareto Chart, Multi-Vari Chart, Dot Plot; 
+\item[Improve] - Full and fractional factorial, response surface and mixture designs as well as the desirability approach for simultaneous optimization of more than one response variable. Normal, Pareto and Lenth Plot of effects as well as Interaction Plots; 
+\item[Control] - Quality Control Charts can be found in the \textbf{qcc} package. 
+\end{description}
+
+\item The focus is on teaching the statistical methodology used in the Quality Sciences.
+\end{itemize}
+\end{frame}
+
+%--------------------------------------------------------------------%
+\end{document}

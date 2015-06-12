@@ -1,0 +1,84 @@
+
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc}
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} 
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape}
+
+\begin{document}
+
+\tableofcontents
+\newpage
+\section{EWMA chart}
+\begin{itemize}
+\item In statistical quality control, the EWMA chart (or exponentially-weighted moving average chart) is a type of control chart used to monitor either variables or attributes-type data using the monitored business or industrial process's entire history of output.
+\item While other control charts treat rational subgroups of samples individually, the EWMA chart tracks the exponentially-weighted moving average of all prior sample means. 
+\item EWMA weights samples in geometrically decreasing order so that the most recent samples are weighted most highly while the most distant samples contribute very little.
+\item 
+Although the normal distribution is the basis of the EWMA chart, the chart is also relatively robust in the face of non-normally distributed quality characteristics.
+\item There is, however, an adaptation of the chart that accounts for quality characteristics that are better modeled by the Poisson distribution.
+\item The chart monitors only the process mean; monitoring the process variability requires the use of some other technique.
+\item 
+The EWMA control chart requires a knowledgeable person to 
+select two parameters before setup:
+\item 
+The first parameter is $\lambda$, the weight given to the most recent rational subgroup mean. $\lambda$ must satisfy $0 < \lambda \leq 1$, but selecting the "right" value is a matter of personal preference and experience. 
+%One source recommends 0.05 ≤ λ ≤ 0.25,[2]:411 while another recommends 0.2 ≤ λ ≤ 0.3.[1]
+\item The second parameter is L, the multiple of the rational subgroup standard deviation that establishes the control limits. L is typically set at 3 to match other control charts, but it may be necessary to reduce L slightly for small values of $\lambda$.
+\item Instead of plotting rational subgroup averages directly, the EWMA chart computes successive observations zi by computing the rational subgroup average, $\bar{x_i}$, and then combining that new subgroup average with the running average of all preceding observations, zi - 1, using the specially–chosen weight, $\lambda$, as follows:
+
+\[z_i = \lambda \bar x_i + \left ( 1 - \lambda \right)z_{i - 1}\]
+\item The control limits for this chart type are 
+
+\[T \pm L\frac {S}{\sqrt n}\sqrt{\frac{\lambda}{2 - \lambda}\lbrack 1 - \left ( 1 - \lambda \right )^{2i} \rbrack}\] where T and S are the estimates of the long-term process mean and standard deviation established during control-chart setup and n is the number of samples in the rational subgroup. Note that the limits widen for each successive rational subgroup, approaching \[ \pm L\frac {\hat \sigma}{\sqrt n}.\]
+
+\item The EWMA chart is sensitive to small shifts in the process mean, but does not match the ability of Shewhart-style charts (namely the $\bar{x}$ and R and $\bar{x}$ and s charts) to detect larger shifts.
+\item One author recommends superimposing the EWMA chart on top of a suitable Shewhart-style chart with widened control limits in order to detect both small and large shifts in the process mean.
+\end{itemize}
+%-------------------------------------------------------------------------------------------%
+\newpage
+\section{Multivariate EWMA Control Chart}
+\begin{itemize}
+\item MEWMA is the natural multivariate extension of the EWMA chart proposed by
+Roberts (1959). It was introduced by Lowry et al. (1992) and is more sensible in
+detecting nonrandom changes in the process and based on the principle of the
+weighted average of the previously observed vectors.
+\item
+Despite the fact that it is used mainly for individual observations (n = 1) it can
+be utilized in rational subgroup case as it will be explained later. It is also a chart for
+Phase II.
+\end{itemize}
+\end{document}
