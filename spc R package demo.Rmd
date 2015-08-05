@@ -1,0 +1,142 @@
+---
+title: "spc R package demo"
+author: "Kevin O'Brien"
+date: "Sunday, July 12, 2015"
+output: html_document
+---
+```{r}
+
+library(spc)
+```
+#### sewma.crit
+```{r}
+## Mittag et al. (1998)
+## compare their upper critical value 2.91 that
+## leads to the upper control limit via the formula shown below
+## (for the usual upper EWMA \eqn{S^2}{S^2}).
+## See Knoth (2006b) for a discussion of this EWMA setup and it's evaluation.
+```
+
+```{r, echo=FALSE}
+l  <- 0.18
+L0 <- 250
+df <- 4
+limits <- sewma.crit(l, L0, df)
+limits["cu"]
+
+limits.cu.mittag_et_al <- 1 + sqrt(l/(2-l))*sqrt(2/df)*2.91
+limits.cu.mittag_et_al
+```
+
+```{r, echo=FALSE}
+## Knoth (2005)
+## reproduce the critical value given in Figure 2 (c=1.661865) for
+## upper EWMA \eqn{S^2}{S^2} with df=1
+
+l  <- 0.025
+L0 <- 250
+df <- 1
+limits <- sewma.crit(l, L0, df)
+cv.Fig2 <- (limits["cu"]-1)/( sqrt(l/(2-l))*sqrt(2/df) )
+cv.Fig2
+
+## the small difference (sixth digit after decimal point) stems from
+## tighter criterion in the secant rule implemented in the R package.
+```
+
+```{r, echo=FALSE}
+## demo of unbiased ARL curves
+## Deploy, please, not matrix dimensions smaller than 50 -- for the
+## sake of accuracy, the value 80 was used.
+## Additionally, this example needs between 1 and 2 minutes on a 1.6 Ghz box. 
+```
+
+```{r, echo=FALSE}
+## Not run: 
+l  <- 0.1
+L0 <- 500
+df <- 4
+limits <- sewma.crit(l, L0, df, sided="two", mode="unbiased", r=80)
+SEWMA.arl <- Vectorize(sewma.arl, "sigma")
+SEWMA.ARL <- function(sigma) 
+  SEWMA.arl(l, limits[1], limits[2], sigma, df, sided="two", r=80)
+layout(matrix(1:2, nrow=1))
+curve(SEWMA.ARL, .75, 1.25, log="y")
+curve(SEWMA.ARL, .95, 1.05, log="y")
+## End(Not run)
+```
+
+```{r, echo=FALSE}
+# the above stuff needs about 1 minute
+
+## control limits for upper and lower EWMA charts with reflecting barriers
+## (reflection at in-control level sigma0 = 1)
+## examples from Knoth (2006a), Tables 4 and 5
+```
+
+```{r, echo=FALSE}
+## Not run: 
+## upper chart with reflection at sigma0=1 in Table 4: c = 2.4831
+l <- 0.15
+L0 <- 100
+df <- 4
+limits <- sewma.crit(l, L0, df, cl=1, sided="Rupper", r=100)
+cv.Tab4 <- (limits["cu"]-1)/( sqrt(l/(2-l))*sqrt(2/df) )
+cv.Tab4
+```
+
+```{r, echo=FALSE}
+## lower chart with reflection at sigma0=1 in Table 5: c = 2.0613
+l <- 0.115
+L0 <- 200
+df <- 5
+limits <- sewma.crit(l, L0, df, cu=1, sided="Rlower", r=100)
+cv.Tab5 <- -(limits["cl"]-1)/( sqrt(l/(2-l))*sqrt(2/df) )
+cv.Tab5
+## End(Not run)
+
+```
+#### `xewma.ad`
+- Computation of the steady-state Average Run Length (ARL) for different types of EWMA control charts monitoring normal mean.
+```{r, echo=FALSE}
+## comparison of zero-state (= worst case ) and steady-state performance
+## for two-sided EWMA control charts
+
+l <- .1
+c <- xewma.crit(l,500,sided="two")
+mu <- c(0,.5,1,1.5,2)
+arl <- sapply(mu,l=l,c=c,sided="two",xewma.arl)
+ad <- sapply(mu,l=l,c=c,sided="two",xewma.ad)
+round(cbind(mu,arl,ad),digits=2)
+
+## Lucas/Saccucci (1990)
+## two-sided EWMA
+```
+
+```{r, echo=FALSE}
+## with fixed limits
+l1 <- .5
+l2 <- .03
+c1 <- 3.071
+c2 <- 2.437
+mu <- c(0,.25,.5,.75,1,1.5,2,2.5,3,3.5,4,5)
+ad1 <- sapply(mu,l=l1,c=c1,sided="two",xewma.ad)
+ad2 <- sapply(mu,l=l2,c=c2,sided="two",xewma.ad)
+round(cbind(mu,ad1,ad2),digits=2)
+```
+
+```{r, echo=FALSE}
+## original results are (in Table 3)
+## 0.00 499.   480.  
+## 0.25 254.    74.1
+## 0.50  88.4   28.6
+## 0.75  35.7   17.3
+## 1.00  17.3   12.5
+## 1.50   6.44   8.00
+## 2.00   3.58   5.95
+## 2.50   2.47   4.78
+## 3.00   1.91   4.02
+## 3.50   1.58   3.49
+## 4.00   1.36   3.09
+## 5.00   1.10   2.55
+```
