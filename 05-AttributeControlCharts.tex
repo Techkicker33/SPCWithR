@@ -1,0 +1,126 @@
+
+
+\documentclass[SPC-MASTER.tex]{subfiles}
+\begin{document}
+
+\section{Attribute Control Charts}
+
+\begin{itemize}
+\item The Shewhart control chart plots quality characteristics that can be measured and expressed numerically. We measure weight, height, position, thickness, etc. If we cannot represent a particular quality characteristic numerically, or if it is impractical to do so, we then often resort to using a quality characteristic to sort or classify an item that is inspected into one of two "buckets".
+\item  An example of a common quality characteristic classification would be designating units as "conforming units" or "nonconforming units". 
+\item Another quality characteristic criteria would be sorting units into "non defective" and "defective" categories. Quality characteristics of that type are called \textit{\textbf{attributes}}.
+
+\item \textit{Note that there is a difference between "nonconforming to an engineering specification" and "defective" -- a nonconforming unit may function just fine and be, in fact, not defective at all, while a part can be "in spec" and not fucntion as desired (i.e., be defective).}
+
+\item Examples of quality characteristics that are attributes are the number of failures in a production run, the proportion of malfunctioning wafers in a lot, the number of people eating in the cafeteria on a given day, etc.
+\end{itemize}
+\subsection{Types of Attributes Control Charts}
+
+\begin{itemize}
+\item Control charts dealing with the proportion or fraction of defective product are called  \textbf{\textit{p-charts}} (for proportion).
+\item Control charts dealing with the number of defective product are called  \textbf{\textit{np-charts}}.
+\item Control charts dealing with the number of defects or nonconformities are called \textbf{\textit{c-charts}} (for count).
+\item There is another chart which handles defects per unit, called the \textbf{\textit{u-chart}} (for unit). This applies when we wish to work with the average number of nonconformities per unit of product.
+\end{itemize}
+
+\newpage
+\subsection{p-charts}
+\begin{itemize}
+\item The p-chart is a type of control chart used to monitor the \textbf{proportion of nonconforming units} in a sample, where the sample proportion nonconforming is defined as the ratio of the number of nonconforming units to the sample size, n.
+\item The p-chart only accommodates dichotomous PASS/FAIL-type inspection as determined by a series of tests, effectively applying the specifications to the data before they are plotted on the chart. 
+\item Other types of control charts display the magnitude of the quality characteristic under study, making troubleshooting possible directly from those charts.
+\item A p-chart is an attributes control chart used with data collected in subgroups of varying sizes. Because the subgroup size can vary, it shows a proportion on nonconforming items rather than the actual count. 
+\textit{\item p-charts show how the process changes over time. The process attribute (or characteristic) is always described in a yes/no, pass/fail, go/no go form. }
+\item Example: use a p-chart to plot the proportion of incomplete insurance claim forms received weekly. The subgroup would vary, depending on the total number of claims each week. 
+%\item P-charts are used to determine if the process is stable and predictable, as well as to monitor the effects of process improvement theories.
+\end{itemize}
+\newpage
+\subsection{np-charts}
+The np-chart is a type of control chart used to monitor the number of nonconforming units in a sample. An np-chart is an \textit{attributes} control chart used with data collected in subgroups that are the \textbf{same size}. 
+\newline
+\newline
+\noindent It is an adaptation of the p-chart and used in situations where personnel find it easier to interpret process performance in terms of concrete numbers of units rather than the somewhat more abstract proportion.
+\newline
+\newline
+\noindent The np-chart differs from the p-chart in only the three following aspects:
+\begin{itemize}
+\item The control limits are 
+\[n\bar p \pm 3\sqrt{n\bar p(1-\bar p)}\], where n is the sample size and $\bar{p}$ is the estimate of the long-term process mean established during control-chart setup.
+
+\item The number nonconforming (np), rather than the fraction nonconforming (p), is plotted against the control limits.
+
+\item The sample size, n, is constant.
+\end{itemize}
+%
+%\subsubsection{Similarities and Differences}
+%Both p-charts and np-charts show how the process, measured by the number of nonconforming items it produces, changes over time. The process attribute (or characteristic) is always described in a binary form (i.e. yes/no, pass/fail etc). 
+%
+%For example, the number of incomplete accident reports in a constant daily sample of five would be plotted on an np-chart. Np-charts are used to determine if the process is stable and predictable, as well as to monitor the effects of process improvement theories. 
+%
+%The np-chart shows the number of nonconforming units in subgroups of set sizes.
+
+%EDIT - MOVE ALL REMAINING TEXT IN SECTION TO "ATTRIBUTES DATA"
+%\subsection{When is it used?}
+%
+%Use np-charts when exploring the following:
+%
+%\begin{itemize}
+%\item Do you need to assess system stability?
+%
+%\item Is the data the number of nonconforming items per subgroup?
+%
+%\item Are the subgroups the same size?
+%
+%\item Are there only two outcomes to any given check?
+%
+%\item Is the time order of subgroups preserved?
+%\end{itemize}
+
+%\subsection{Optimized Usage}
+%Collect as many subgroups as possible before calculating control limits. With smaller amounts of data, the np-chart may not represent variability of the entire system. The more subgroups you use in control limit calculations, the more reliable the analysis will be. Typically, 20 to 25 subgroups will be used in control limit calculations.
+
+%\subsection{Applications of np-charts}
+%There are several applications for np-charts. When you begin improving a system, use them to assess the system’s stability .
+%
+%\noindent \textbf{Stratification:} After the stability has been assessed, determine if you need to stratify the data. You may find entirely different results between shifts, among workers, among different machines, among lots of materials, etc. To see if variability on the np-chart is caused by these factors, collect and enter data in a way that lets you stratify by time, location, symptom, operator, and lots.
+%
+%You can also use np-charts to analyze the results of process improvements. Here you would consider how the process is running and compare it to how it ran in the past. Are there fewer nonconforming units?
+%
+%Finally, use np-charts for standardization. This means you should continue collecting and analyzing data throughout the process operation. If you made changes to the system and stopped collecting data, you would have only perception and opinion to tell you whether the changes actually improved the system. Without a control chart, there is no way to know if the process has changed or to identify sources of process variability.
+%--------------------------------------------------------------- %
+\newpage
+\subsection{The c-chart}
+
+
+
+\begin{itemize}
+\item In this chart, we plot the number of defectives (per batch, per day, per machine, per 100 feet of pipe, etc.). 
+\item This chart assumes that defects of the quality attribute are rare, and the control limits in this chart are computed based on the Poisson distribution (distribution of rare events).
+
+\item The c-chart is a type of control chart used to monitor "count"-type data, typically total number of nonconformities per unit.It is also occasionally used to monitor the total number of events occurring in a given unit of time.
+
+\item The c-chart differs from the p-chart in that it accounts for the possibility of more than one nonconformity per inspection unit, and that (unlike the p-chart and u-chart) it requires a fixed sample size. 
+
+\item The p-chart models "pass"/"fail"-type inspection only, while the c-chart (and u-chart) give the ability to distinguish between (for example) 2 items which fail inspection because of one fault each and the same two items failing inspection with 5 faults each; in the former case, the p-chart will show two non-conformant items, while the c-chart will show 10 faults.
+
+\item The Poisson distribution is the basis for the chart and requires the following assumptions:
+\begin{itemize}
+\item[$\ast$] The number of opportunities or potential locations for nonconformities is very large
+\item[$\ast$] The probability of nonconformity at any location is small and constant
+\item[$\ast$] The inspection procedure is same for each sample and is carried out consistently from sample to sample
+\end{itemize}
+\end{itemize}
+%-------------------------------------------------------------- %
+\newpage
+\subsection{The u-chart}
+\begin{itemize}
+\item In this chart we plot the rate of defectives, that is, the number of defectives divided by the number of units inspected (the n; e.g., feet of pipe, number of batches). 
+\item Unlike the C chart, this chart does not require a constant number of units, and it can be used, for example, when the batches (samples) are of different sizes.
+
+\item The u-chart is a type of control chart used to monitor "count"-type data where the sample size is greater than one, typically the average number of nonconformities per unit.
+
+\item The u-chart differs from the c-chart in that it accounts for the possibility that the number or size of inspection units for which nonconformities are to be counted may vary. Larger samples may be an economic necessity or may be necessary to increase the area of opportunity in order to track very low nonconformity levels.
+\end{itemize}
+
+
+\end{document}

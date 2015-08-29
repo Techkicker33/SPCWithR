@@ -1,0 +1,167 @@
+%--------------------------------------------------------------- %
+\documentclass[SPC-MASTER.tex]{subfiles}
+\begin{document}
+\Large
+	
+\section{Assumption of Normality}
+\subsection{Multivariate Normal}
+{\Large
+\begin{itemize}
+\item The multivariate normal distribution (or multivariate Gaussian distribution), is a generalization of the one-dimensional (univariate) normal distribution to higher dimensions.\item One possible definition is that a random vector is said to be k-variate normally distributed if every linear combination of its k components has a univariate normal distribution. 
+%\item However, its importance derives mainly from the multivariate central limit theorem.
+\item The multivariate normal distribution is often used to describe, at least approximately, any set of (possibly) correlated real-valued random variables each of which clusters around a mean value.
+\end{itemize}
+}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{./793px-MultivariateNormal}
+\caption{}
+\label{fig:793px-MultivariateNormal}
+\end{figure}
+%------------------------------------------------------ % 
+\newpage
+\subsection{Testing for Normality}
+%MSQC
+{
+\large
+\textbf{Graphical Methods}
+\begin{itemize}
+\item Histograms
+\item Normal Probability Plots
+\end{itemize}
+
+\noindent\textbf{Hypothesis Tests for Univariate Data}
+\begin{itemize}
+\item Shapiro-Wilk Test (inbuilt with \texttt{R})
+\item D'Agostino Test (MSQC package)
+\end{itemize}
+\bigskip
+
+\noindent\textbf{Hypothesis Tests for Multivariate Data}
+\begin{itemize}
+\item Mardia Test (MSQC package)
+\item Henze and Zirkler (MSQC package)
+\item Royston Test (MSQC package)
+\end{itemize}
+
+
+}
+\newpage
+\subsubsection{The bimetal data set (MSQC package)}
+{\large
+\begin{itemize}
+\item Bimetal thermostat has innumerable practical uses. These types of thermostats hold
+a bimetallic strip composed by two strips of different metals that convert the
+changing of temperature in mechanical displacement due to the difference in
+thermal expansion.
+\item Certain type of strip composed of brass and steel is analyzed in a quality
+laboratory by testing the deflection, curvature, resistivity, and hardness in low
+and high expansion sides.
+\end{itemize}
+{
+\large
+
+\begin{verbatim}
+> tail(bimetal1)
+      deflection curvature resistivity Hardness low side Hardness high side
+[23,]      20.76     39.98       14.98             22.29             26.03
+[24,]      21.00     40.11       15.17             22.04             25.99
+[25,]      20.57     39.73       14.35             22.02             25.80
+[26,]      20.78     39.83       15.27             21.60             25.89
+[27,]      20.96     40.03       15.26             21.98             25.94
+[28,]      21.14     39.93       14.98             21.84             25.98
+
+\end{verbatim}
+}
+\newpage
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\linewidth]{images/MSQC-bimetal1hist}
+\caption{}
+\label{fig:MSQC-bimetal1hist}
+\end{figure}
+\newpage
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\linewidth]{images/MSQC-bimetal1qq}
+\caption{}
+\label{fig:MSQC-bimetal1qq}
+\end{figure}
+\newpage
+\subsubsection{D'Agostino Test (MSQC Package)}
+\begin{itemize}
+\item Using the bimetal1 data set in MSQC package
+\end{itemize}
+\begin{framed}
+\begin{verbatim}
+> for (i in 1 : 5){
++  DAGOSTINO(bimetal1[,i])
++  }
+D'Agostino Test
+    Skewness
+      Skewness coefficient: 0.0831225 
+      Statistics: 0.2117358 
+      p-value: 0.8323131 
+    Kurtosis
+      The kurtosis coefficient: 3.0422 
+      Statistics: 0.591983 
+      p-value: 0.553862 
+    Omnibus Test
+      Chi-squared: 0.3952759 
+      Degree of freedom: 2
+      p-value: 0.8206669 
+....
+....
+D'Agostino Test
+    Skewness
+      Skewness coefficient: -0.04173762 
+      Statistics: -0.1063873 
+      p-value: 0.9152751 
+    Kurtosis
+      The kurtosis coefficient: 4.162062 
+      Statistics: 1.675258 
+      p-value: 0.09388364 
+    Omnibus Test
+      Chi-squared: 2.817807 
+      Degree of freedom: 2
+      p-value: 0.2444111 
+\end{verbatim}
+\end{framed}
+\newpage
+\subsubsection{Some Multivariate (MSQC Pacakge)}
+\begin{framed}
+\begin{verbatim}
+> MardiaTest(bimetal1)
+$skewness
+[1] 6.982112
+
+$p.value
+[1] 0.585327
+
+$kurtosis
+[1] 33.77373
+
+$p.value
+[1] 0.3490892
+
+> 
+>
+>
+> HZ.test(bimetal1)
+[1] 0.6068650 0.7709586
+> 
+> 
+> Royston.test(bimetal1)
+test.statistic        p.value 
+     1.1814742      0.9364221 
+\end{verbatim}
+\end{framed}
+
+\newpage
+
+
+\subsubsection{Box Cox Transformation}
+\begin{itemize}
+\item The Box-Cox transforms nonnormally distributed data to a set of data that has approximately normal distribution. 
+\end{itemize}
+\end{document}

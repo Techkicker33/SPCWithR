@@ -1,0 +1,111 @@
+
+
+\documentclass[SPC-MASTER.tex]{subfiles}
+\begin{document}
+\Large
+\section{Process Capability}
+Process capability is the measure of process performance. Capability refers to the ability of a process to make parts that are well within engineering specifications. A capability study is done to answer the questions, \textit{``Does the process need to be improved?"} and  \textit{``How much does the process need to be improved?"}
+
+To define the study of process capability from another perspective, a capability study is a technique for analyzing the random variability found in a production process. In every manufacturing process there is variability. This variability may be large or small, but it is always present. It can be divided into two types:
+
+\begin{itemize}
+\item Variability due to common (random) causes
+\item Variability due to assignable (special) causes
+\end{itemize}
+%----------------------------------------------------------------------------------------------%
+\subsection{Types of Variability}
+The first type of variability can be expected to occur naturally within a process. It is attributed to common causes that behave like a constant system of chances. These chances form a unique and describable distribution. This variability can never be completely eliminated from a process. Variability due to assignable causes, on the other hand, refers to the variation that can be linked to specific or special causes. If these causes, or factors, are modified or controlled properly, the process variability associated with them can be eliminated. Assignable causes cannot be described by a single distribution.
+%----------------------------------------------------------------------------------------------%
+\newpage
+\subsection{Capability Study} 
+\large
+\begin{itemize}
+\item A capability study measures the performance potential of a process when no assignable causes are present (when it is in statistical control). Since the inherent variability of the process can be described by a unique distribution, usually a normal distribution, capability can be evaluated by utilizing this distribution’s properties. 
+\item Simply put, capability is expressed as the proportion of in-specification process output to total process input.
+
+\item Capability calculations allow predictions to be made regarding quality, enabling manufacturers to take a preventive approach to defects. This statistical approach contrasts to the traditional approach to manufacturing, which is a two-step process: production personnel make the product, and quality control personnel inspect and eliminate those products that do not meet specifications. \item This is wasteful and expensive, since it allows time and materials to be invested in products that are not always usable. It is also unreliable, since even 100\% inspection would fail to catch all defective products.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------------%
+\begin{itemize}
+\item Control Limits are Not an Indication of Capability
+
+\item Those new to SPC often believe they don’t need capability indices. They think they can compare the control limits to the specification limits instead. 
+\item This is not true, because control limits look at the distribution of averages and capability indices look at the distribution of individuals. The distribution of individuals will always spread out further than the distribution of averages. 
+\end{itemize}
+
+\subsection{What is Process Capability?}
+
+Distribution of averages compared to distribution of individuals, for the same sample data. Control limits (based on averages) would probably be inside specification limits, even though many parts are out of specification. This shows why you should not compare control limits to specification limits.
+
+Therefore, the control limits are often within the specification limits, but the $\pm 3$ Sigma distribution of parts is not.  Subgroup averages follow more closely a normal distribution. This is why we can create control charts for processes that are not normally distributed. But averages cannot be used for capability calculations, because capability concerns itself with individual parts, or samples from a process. After all, parts, not averages, get shipped.
+%--------------------------------------------------------------------------------------------------%
+\newpage
+\subsection{Capability Indices}
+
+\begin{description}
+\item[Capability] — The uniformity of product which a process is capable of producing. Can be expressed numerically using CP, CR, CpK, and Zmax/3 when the data is normally distributed.
+
+\item[CP] — For process capability studies: CP is a capability index defined by the formula. CP shows the process capability potential but does not consider how centered the process is. CP may range in value from 0 to infinity, with a large value indicating greater potential capability. A value of 1.33 or greater is usually desired.
+
+\item[CR] — For process capability studies: the inverse of CP, CR can range from 0 to infinity in value, with a smaller value indicating a more capable process.
+
+\item[CpK] — For process capability studies: an index combining CP and K to indicate whether the process will produce units within the tolerance limits. CpK has a value equal to CP if the process is centered on the nominal; if CpK is negative, the process mean is outside the specification limits; if CpK is between 0 and 1, then some of the 6 sigma spread falls outside the tolerance limits. If CpK is larger than 1, the 6 sigma spread is completely within the tolerance limits. A value of 1.33 or greater is usually desired.
+\end{description}
+%---------------------------------------------------------------------------------------------------%
+\newpage
+\subsection{Interpreting Capability Indices}
+\begin{itemize}
+\item The greater the CpK value, the better. A CpK greater than 1.0 means that the $6\sigma  (\pm 3\sigma)$ spread of the data falls completely within the specification limits. A CpK of 1.0 means that one end of the $6\sigma$ spread falls on a specification limit. A CpK between 0 and 1 means that part of the $6\sigma$  spread falls outside the specification limits. A negative CpK indicates that the mean of the data is not between the specification limits.
+
+\item Since a CpK of 1.0 indicates that 99.73\% of the parts produced are within specification limits, in this process it is likely that only about 3 out of 1,000 need to be scrapped or rejected. Why bother to improve the process beyond this point, since it will produce no reduction in scrap or reject costs? Improvement beyond just meeting specification may greatly improve product performance, cut warranty costs, or avoid assembly problems.
+
+\item
+Many companies are demanding CpK indexes of 1.33 or 2.0 of their suppliers’ products. A CpK of 1.33 means that the difference between the mean and specification limit is $4\sigma$  (since 1.33 is 4/3). With a CpK of 1.33, 99.994\% of the product is within specification. Similarly a CpK of 2.0 is $6\sigma$  between the mean and specification limit (since 2.0 is 6/3). 
+\item 
+This improvement from 1.33 to 2.0 or better is sometimes justified to produce more product near the optimal target. Depending on the process or part, this may improve product performance, product life, customer satisfaction, or reduce warranty costs or assembly problems.
+\item
+Continually higher CpK indexes for every part or process is not the goal, since that is almost never economically justifiable. A cost/benefit analysis that includes customer satisfaction and other true costs of quality is recommended to determine which processes should be improved and how much improvement is economically attractive.
+\end{itemize}
+
+\subsection{Process Capability Analysis}
+{
+\Large
+
+\begin{itemize}
+\item Process capability compares the output of an in-control process to the specification limits by using capability indices.
+\item The comparison is made by forming the ratio of the spread between the process specifications (the specification "width") to the spread of the process values, as measured by 6 process standard deviation units (the process "width").
+\end{itemize}
+\newpage
+\subsection{Intepreting Process Capability Indices}
+\begin{itemize}
+\item \textbf{CP}\\
+Historically, this is one of the first capability indexes used. The "natural tolerance" of the process is computed as 6s . The index simply makes a direct comparison of the process natural tolerance to the engineering requirements. Assuming the process distribution is normal and the process average is exactly centered between the engineering requirements, a CP index of 1 would give a "capable process." However, to allow a bit of room for process drift, the generally accepted minimum value for CP is 1.33. In general, the larger CP is, the better. The CP index has two major shortcomings. First, it cannot be used unless there are both upper and lower specifications. Second, it does not account for process centering. If the process average is not exactly centered relative to the engineering requirements, the CP index will give misleading results. In recent years, the CP index has largely been replaced by CPK (see below).
+
+\item\textbf{ CPM}\\
+A CPM of at least 1 is required, and 1.33 is preferred. CPM is closely related to CP. The difference represents the potential gain to be obtained by moving the process mean closer to the target. Unlike CPK, the target need not be the center of the specification range.
+\end{itemize}
+\newpage
+%\subsubsection{Capability Index Example}
+%\begin{itemize}
+%\item For a certain process the USL=20 and the LSL=8. The observed process average, $\bar{x}$$\geq$16, and the standard deviation, s=2. 
+%\item 
+%From this we obtain
+%\[C^p=\frac{USL-LSL}{6s}= \frac{20−8}{6(2)}=1.0.\]
+%\item This means that the process is capable as long as it is located at the midpoint, m=(USL+LSL)/2=14.
+%\item But it doesn't, since $\bar{x}\geq16$. 
+%\item The $\hat{k}$ factor is found by
+%\[\hat{k}=\frac{|m−\bar{x}|(USL−LSL)}/2=26=0.3333\]
+%and
+%\[C^pk=C^p(1−\hat{k})=0.6667.\]
+%\item We would like to have $C^pk$ at least 1.0, so this is not a good process. If possible, reduce the variability or/and center the process. \item We can compute the $C^pu$ and $C^pu$ using
+%\[C^pu=USL−\bar{x}3s=20-163(2)=0.666\]
+%and
+%\[C^pl=\bar{x}-LSL3s=16−83(2)=1.3333.\]
+%\item From this we see that the $C^pu$, which is the smallest of the above indices, is 0.6667. 
+%\item Note that the formula $C^pk=C^p(1−\hat{k})$ is the algebraic equivalent of the $min(C^pu,C^pl)$ definition.
+%\end{itemize}
+}
+%------------------------------------------------------ % 
+\newpage
+\end{document}
