@@ -3,6 +3,16 @@
 \documentclass[SPC-MASTER.tex]{subfiles}
 \begin{document}
 \Large
+
+Index	Description
+\hat{C}_p = \frac{USL - LSL} {6 \hat{\sigma}}	Estimates what the process is capable of producing if the process mean were to be centered between the specification limits. Assumes process output is approximately normally distributed.
+\hat{C}_{p,lower} = {\hat{\mu} - LSL \over 3 \hat{\sigma}}	Estimates process capability for specifications that consist of a lower limit only (for example, strength). Assumes process output is approximately normally distributed.
+\hat{C}_{p,upper} = {USL - \hat{\mu} \over 3 \hat{\sigma}}	Estimates process capability for specifications that consist of an upper limit only (for example, concentration). Assumes process output is approximately normally distributed.
+\hat{C}_{pk} = \min \Bigg[ {USL - \hat{\mu} \over 3 \hat{\sigma}}, { \hat{\mu} - LSL \over 3 \hat{\sigma}} \Bigg]	Estimates what the process is capable of producing, considering that the process mean may not be centered between the specification limits. (If the process mean is not centered, \hat{C}_p overestimates process capability.) \hat{C}_{pk} < 0 if the process mean falls outside of the specification limits. Assumes process output is approximately normally distributed.
+\hat{C}_{pm} = \frac{ \hat{C}_p } { \sqrt{ 1 + \left ( \frac{\hat{\mu} - T} {\hat{\sigma}} \right )^2 } }	Estimates process capability around a target, T. \hat{C}_{pm} is always greater than zero. Assumes process output is approximately normally distributed. \hat{C}_{pm} is also known as the Taguchi capability index.[2]
+\hat{C}_{pkm} = \frac{ \hat{C}_{pk} } { \sqrt{ 1 + \left ( \frac{\hat{\mu} - T} {\hat{\sigma}} \right )^2 } }	Estimates process capability around a target, T, and accounts for an off-center process mean. Assumes process output is approximately normally distributed.
+
+
 \section{Process Capability}
 Process capability is the measure of process performance. Capability refers to the ability of a process to make parts that are well within engineering specifications. A capability study is done to answer the questions, \textit{``Does the process need to be improved?"} and  \textit{``How much does the process need to be improved?"}
 
