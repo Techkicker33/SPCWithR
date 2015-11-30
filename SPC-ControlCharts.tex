@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+\usepackage{framed}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphics}
+\begin{document}
+\tableofcontents
+
+\section{Control Charts}
+A control chart is a statistical measurement tool companies use to determine the effectiveness of their manufacturing or production processes. This chart usually lists a high-low range of production output for each process measured. Managers often use this statistical tool as a quality-control method to analyze and understand variables in production processes, determine the highest amount of output possible and review the issues creating differences between the target output and actual output. The control chart may include a trend or average line drawn in that represents the minimum level of production output that is acceptable for the business process.
+
+Control charts may be used for various departments or production processes in a company. Breaking down each production process using the control chart statistical method analysis can help companies understand the effectiveness of each individual operation that makes up an overall business process. Individual charts can also help managers discover any problems or errors in specific production processes so these items can be corrected to improve the overall production output for the company.
+
+An important part of using a control chart analysis is plotting previous production numbers on the chart for comparison and review by management. Once the company has created individual control charts for each production process and drawn the trend line that represents the average or minimum accepted level of production for each process, the company must then plot previous production numbers on the chart to determine if any variances have occurred. Plotting previous production numbers on the control chart is how companies determine how well their production processes meet the company’s expected level of output. Data points may be plotted on the control chart for a daily or monthly time period, depending on the production process of the company.
+
+Plotting production output on the control chart allows companies to see where major drop offs or large increases have occurred during normal production operations. While companies may be concerned that the data points do not fall closely in line with their minimum accepted production output, data points that fall outside of the high-low range are considered a major concern. Data points falling below the minimum accepted range may indicate significant production problems, such as equipment failure, not enough employees or limited economic resources available for production. Data points falling outside the high range of the control chart may indicate the company was catching up from previous low periods or received more orders than it can produce in a timely manner. Consistently high data points above the high a range may also indicate that the company is unable to meet its quality control standards when producing consumer goods in large, unexpected volumes.
+
+%Control charts are both similar and different to check sheets; the biggest difference is that a specific standard exists that produced goods must meet. For example, the control chart may have a lower limit and upper limit goods must fall between, with a middle limit that represents the expected standard. Process control methods using control charts may work best for testing a batch of goods. For example, testing a select sample of goods to ensure they each fall within the lower and upper limit generally means the entire batch should meet the company’s internal standards. Tested products that fall outside of the control limits may indicate flaws in the production process that need adjusting.
+
+Statistical process control methods are much more involved than the other two control methods here. Companies need to create statistical models — such as a probability chart that defines the success or failure of goods — in which to test both produced goods and departments. Any tests that result in outputs outside of the desired or expected failure rate are unacceptable. For example, a company may accept a failure rate of three percent out of 1,000 goods produced; any differences here are unacceptable and need further research. Another type of statistic may be a deviation from acceptable standards; goods that are too far from the accepted material will not usually pass the inspection process.
+
+\subsection{Control Chart for the Process Mean}
+
+\textit{\textbf{Process Mean and Standard Deviation Known. }}
+
+The process mean and standard deviation would be
+known either because they are process specifications or are based on historical observations of the process when it was deemed to be stable. 
+
+The centerline for the $\bar{X}$ chart is set at the process mean. Using \textit{the Three-sigma rule}, the
+control limits are defined by the same method as that used for determining critical values for hypothesis testing:
+\[ \mbox{Control limits} = \mu \pm 3\frac{\sigma}{\sqrt{n}} \]
+
+\textit{\textbf{Process Mean and Standard Deviation Unknown}} 
+
+The process mean and standard deviation are
+unknown, the required assumption is that the samples came from a stable process. Thus, recent sample results
+are used as the basis for determining the stability of the process as it continues. First the overall mean of the $k$
+sample means and the mean of the $k$ sample standard deviations are determined:
+\[ \bar{\bar{X}} = \frac{\sum \bar{X}}{k} \]
+
+\[ \bar{s} = \frac{\sum s} {k}  \]
+
+
+Although
+$\bar{\bar{X}}$ (X double-bar) is an unbiased estimator of $\mu$, $\bar{s}$ is a biased estimator of s. 
+
+This is true even
+though $s^2$ is an unbiased estimator of $\sigma^2$. Therefore, the formula for the control limits incorporates a correction factor $c_4$
+for the biasedness in $\bar{s}$:
+{
+\large
+\begin{framed}
+\[ \mbox{Control limits} = \bar{x} \pm 3\frac{\bar{s}}{c_4\sqrt{n}} \]
+\end{framed}
+}
+\end{document}
