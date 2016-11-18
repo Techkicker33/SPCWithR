@@ -1,10 +1,30 @@
-\documentclass[12pt]{article}
-\usepackage{framed}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{graphics}
+%--------------------------------------------------------------- %
+\documentclass[SPC-MASTER.tex]{subfiles}
 \begin{document}
-\tableofcontents
+\Large
+\section{CUSUM Charts}
+\begin{itemize}
+\item CUSUM charts, while not as intuitive and simple to operate as Shewhart charts, have been shown to be more efficient in detecting small shifts in the mean of a process. \item In particular, analyzing ARL's for CUSUM control charts shows that they are better than Shewhart control charts when it is desired to detect shifts in the mean that are 2 sigma or less.
+\end{itemize}
+
+
+
+% http://www.itl.nist.gov/div898/handbook/pmc/section3/pmc323.htm
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{images/CUSUMorings1}
+\caption{}
+\label{fig:CUSUMorings1}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{images/CUSUMorings2}
+\caption{}
+\label{fig:CUSUMorings2}
+\end{figure}
+
 \section{The CUSUM chart}
 
 Although the Shewhart chart is sensitive to sudden and large changes in measurement, it is ineffective in detecting small but persistent departure from the bench mark. For this, the CUSUM chart is more appropriate.
@@ -17,8 +37,8 @@ The first is to make the CUSUM line stable. As the number of measurements are ta
 
 The consequence of this is that two sets of CUSUM values are available, 
 \begin{itemize}
-\item one marks departures in excess of bench mark value, 
-\item and the other marks departures below the bench mark value.
+	\item one marks departures in excess of bench mark value, 
+	\item and the other marks departures below the bench mark value.
 \end{itemize}
 
 
@@ -26,6 +46,22 @@ The second is when to decide that the process is out of control and raise the al
 
 
 This \textbf{h} really depends on how sensitive the user wishs the method to be. The more sensitive (the closer \textbf{h} is to the bench mark), the quicker will any departure from the bench mark be detected, but also the more likely a false alarm will occur.
+\newpage
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\linewidth]{images/CUSUMorings1}
+\caption{}
+\label{fig:cusumorings1}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\linewidth]{images/CUSUMorings2}
+\caption{}
+\label{fig:cusumorings2}
+\end{figure}
+
+\newpage
+
 \subsection{Average Run Length}
 The sensitivity of \textbf{h} is calculated from the \textit{\textbf{averaged run length (arl)}}. This is the averaged number of measurements between each false alarm when the situation is still in control.
 \end{document}
