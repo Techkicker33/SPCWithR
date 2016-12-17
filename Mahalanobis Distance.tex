@@ -1,0 +1,65 @@
+
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc}
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper}
+\usepackage{graphicx} 
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} 
+\usepackage{subfig}
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{Mahalanobis Distance}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} 
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape}
+
+\begin{document}
+
+\tableofcontents
+\newpage
+
+\section{Mahalanobis Distance}
+
+
+Mahalanobis distance provides a way to measure how similar some set of conditions is to a known set of conditions. It accounts the covariance among variables.
+
+It is calculated as:
+\[D^2=(x-m)^TC^{-1}(x-m)\]
+\begin{itemize}
+\item $D^2$ Mahalanobis distance
+\item $x$ Vector of data
+\item $m$ Vector of mean values of independent variables
+\item $C^{-1}$ Inverse Covariance matrix of independent variables
+\item $T$ Indicates vector should be transposed
+\end{itemize}
+
+\begin{itemize}
+
+\item This page provides a detailed explanation (with examples from landscape analysis)
+
+
+\item Mahalanobis distance is used to find outliers in a set of data. I don't know what field you are in, but in psychology it is used to identify cases that do not "fit" in with what is expected given the norms for the data set. 
+
+\item For example, if your sample is composed of individuals with low levels of depression and you have one or two individuals with very high levels of depression, then they would have Mahalanobis distances which are greater than the expected critical value. 
+
+\item You would probably want to remove these cases if they are very extreme AND if you feel that they do not fit in with your data set. (Using provided example, your sample is composed of individuals with low levels of depression, therefore those one or two individuals with high levels of depression do not fit in with the rest). 
+
+\item Identifying outliers is very important because many statistical analyses have an "assumption of normality" i.e. an expectation that your data a normally distributed. Outliers can also contribute to skewed data, and for this reason they should also be removed. (Unless you transform the entire variable and this corrects the skew). 
+
+\item Many stats programs such as SPSS allow you to calculate the M distances and the probability associated with each score to identify outliers. I can provide you with SPSS instructions, but I don't know if you are using SPSS.
+\end{itemize}
+\end{document}
