@@ -1,0 +1,127 @@
+\documentclass[]{article}
+
+\begin{document}
+\maketitle
+This module will introduce and use the Statistics appropriate for master black belt level Six Sigma.
+
+The module makes extensive use of Minitab 17 as a practical application of a software tool to undertake statistical analysis.
+
+Areas covered include:
+
+History and development of traditional quality control techniques; Statistical quality control, inspection and detection methods; Quality Science and Quality Engineering.
+Six Sigma DMAIC problem solving methodology
+Fundamental Statistics, Descriptive/Summary Statistics:Graphs, histograms, location, spread, Box-plots, Basic distribution theory
+Inferential Statistics, confidence intervals and hypothesis testing, Z-tests, T-tests, analysis of variance, Decision making under uncertainty,  Correlation and Regression tests
+Analysing categorical data and non-parametric data
+
+%===============================================%
+\section{Gauge Repeatability and Reproducibility (GR\&R)}
+  
+Gauge Repeatability and Reproducibility, or GR\&R, is a measure of the capability of a gauge or gage to obtain the same measurement reading every time the measurement process is undertaken for the same characteristic or parameter.  In other words, GR\&R indicates the consistency and stability of a measuring equipment. The ability of a measuring device to provide consistent measurement data is important in the control of any process.
+  
+Mathematically, GR\&R is actually a measure of the variation of a gage's measurement, and not of its stability.  An engineer must therefore strive to minimize the GR\&R numbers of his or her measuring equipment, since a high GR\&R number indicates instability and is thus undesirable.
+          
+As its name implies, GR\&R (or simply 'R\&R') has two major components, namely, repeatability and reproducibility. Repeatability is the ability of the same gage to give consistent measurement readings no matter how many times the same operator of the gage repeats the measurement process.  Reproducibility, on the other hand, is the ability of the same gage to give consistent measurement readings regardless of who performs the measurements.  The evaluation of a gage's reproducibility, therefore, requires measurement readings to be acquired by different operators under the same conditions.
+  
+Of course, in the real world, there are no existing gages or measuring devices that give exactly the same measurement readings all the time for the same parameter.  There are five  major elements of a measurement system, all of which contribute to the variability of a measurement process: 
+\begin{enumerate}
+\item the standard
+\item the workpiece
+\item the instrument
+\item the people
+\item the environment.
+\end{enumerate}
+              
+All of these factors affect the measurement reading acquired during each measurement cycle, although to varying degrees.  Measurement errors, therefore, can only be minimized if the errors or variations contributed individually by each of these factors can also be minimized. Still, the gage is at the center of any measurement process, so its proper design and usage must be ensured to optimize its repeatability and reproducibility.
+
+  
+There are various ways by which the R\&R of an instrument may be assessed, one of which is outlined below. This method, which is based on the method recommended by the Automotive Industry Action Group (AIAG), first computes for variations due to the measuring equipment and its operators. The over-all GR\&R is then computed from these component variations.
+
+  
+Equipment Variation, or EV, represents the repeatability of the measurement process.  It is calculated from measurement data obtained by the same operator from several cycles of measurements, or trials, using the same equipment. 
+
+Appraiser Variation or AV, represents the reproducibility of the measurement process.  It is calculated from measurement data obtained by different operators or appraisers using the same equipment under the same conditions.  The R\&R, is just the combined effect of EV and AV.
+
+   
+It must be noted that measurement variations are caused not just by EV and AV, but by Part Variation as well, or PV. PV represents the effect of the variation of parts being measured on the measurement process, and is calculated from measurement data obtained from several parts. 
+
+   
+Thus, the Total Variation (TV), or the over-all variation exhibited by the measurement system, consists of the effects of both R\&R and PV.  TV is equal to the square root of the sum of $(R\&R)^2$ and $(PV)^2$ square, i.e.,  
+\[TV = \sqrt{ (R\&R)^2 + PV^2 }\]
+   
+% In a GR\&R report, the final results are often expressed as \%EV, \%AV, \%R\&R, and %PV, which are simply the ratios of EV, AV, R&R, and PV to % TV expressed in \%.  Thus, %EV=(EV/TV)x100%; %AV=(AV/TV)x100%; %R&R=(R&R/TV)x100%; and %PV=(PV/TV)x100%. 
+% The gage is good if its %R&R is less % than 10%.  A %R&R between 10% to 30% may also be acceptable, depending on what it would take to improve the R&R.  A %R&R of more than 30%, 
+% however, should prompt the process owner to investigate how the R&R of the gage can be further improved.
+ 
+\section{Repeatability and Reproducibility}
+There are two important aspects of a Gauge R\&R:
+\begin{description}
+\item[Repeatability:] The variation in measurements taken by a single person or instrument on the same or replicate item and under the same conditions.
+\item[Reproducibility:] the variation induced when different operators, instruments, or laboratories measure the same or replicate specimen.
+\end{description}
+\textbf{What is the difference between repeatability and reproducibility?}
+
+Precision is estimated by making repeat measurements on a sample under specified conditions. Repeatability and reproducibility are different measurement conditions which will give rise to different estimates of precision. 
+
+Repeatability conditions are when replicate measurements are made in one laboratory, by a single analyst, using the same equipment over a short time period. A common definition of reproducibility conditions is when the replicate measurements are made by different analysts, working in different laboratories, using different equipment over an extended time period.
+
+
+%-----------------------------------------------------------------------------------------%
+\section{ARL}
+\begin{itemize}
+\item Average Run Length (ARL)
+\item Average Time to Signal (ASL)
+\end{itemize}
+
+
+
+%------------------------------------------------------------------------------------------%
+
+
+\section{Short Question}
+\begin{itemize}
+\item Illustrate the error types with regard to control charts using a matrix and simple sketches.  (2012 Q1 i)
+
+\item In relation to process adjustment what does tampering mean? (2012 Q1 ii)
+
+\item In a multi-var chart what are the three variation types studied? (2012 Q1 vi)
+
+\item In a capability Study for a measuring 
+system the equipment and appraiser variation were found to be 0.091 and 0.077 respectively.
+Calculate the repeatability and the reproducibility. (2012 Q1 vii)
+
+\item When calculating the control limits on an X-bar chart we use the formula
+\[ X \pm A_2R\] What does $A_2R$ represent?.(2012 Q1 x)
+
+\item Outline the formulae for $C_m$ and $C_{mk}$. (2010 Q1 viii)
+
+\item Why is it important to analyse measurement systems? (2010 Q1 ix)
+
+\item List the four components of gauge variability (2010 Q1 x)
+
+\item For attribute charting, how is capability calculated (2010 Q1 i)
+
+\item A sample collected from a machine gave the following values
+\[ 5.0, 5.3, 8.0, 9.2, 10.0, 10.0\]
+Calculate the Standard Deviation of the sample. (2012 Q1 iii)
+
+\item Represent diagrammatically $\alpha$ and $\beta$ in relation to control charts.
+\end{itemize}
+
+\section{Multi-Vari Charts}
+
+A multi-vari chart is a tool that graphically displays patterns of variation. It is used to identify possible Xs or families of variation, such as variation within a subgroup, between subgroups, or over time. 
+
+\subsection{I-MR chart}
+
+An I-MR chart, or individual and moving range chart, is a graphical tool that displays process variation over time. It signals when a process may be going out of control and shows where to look for sources of special cause variation.
+\end{document}
+
+
+Six Sigma is a management philosophy developed by Motorola that emphasizes setting extremely high objectives, collecting data, and analyzing results to a fine degree as a way to reduce defects in products and services. 
+
+The Greek letter sigma is sometimes used to denote variation from a standard. The philosophy behind Six Sigma is that if you measure how many defects are in a process, you can figure out how to systematically eliminate them and get as close to perfection as possible. In order for a company to achieve Six Sigma, it cannot produce more than 3.4 defects per million opportunities, where an opportunity is defined as a chance for nonconformance.
+%=============================================%
+Six Sigma proponents claim that its benefits include up to 50\% process cost reduction, cycle-time improvement, less waste of materials, a better understanding of customer requirements, increased customer satisfaction, and more reliable products and services. It is acknowledged that Six Sigma can be costly to implement and can take several years before a company begins to see bottom-line results. Texas Instruments, Scientific-Atlanta, General Electric, and Allied Signal are a few of the companies that practice Six Sigma.
+
+%=============================================%

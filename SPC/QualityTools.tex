@@ -1,0 +1,213 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This file is a template using the "beamer" package to create slides for a talk or presentation
+% - Introducing another speaker.
+% - Talk length is about 2min.
+% - Style is ornate.
+
+% MODIFIED by Jonathan Kew, 2008-07-06
+% The header comments and encoding in this file were modified for inclusion with TeXworks.
+% The content is otherwise unchanged from the original distributed with the beamer package.
+
+\documentclass{beamer}
+%------------------------------------------------------------------------------------------%
+
+\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=structure.fg!25]
+\usetheme{Warsaw}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{}
+\setbeamersize{text margin left=0.5cm}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+%------------------------------------------------------------------------------------------%
+
+% http://en.wikipedia.org/wiki/DMAIC
+% http://www.goleansixsigma.com/dmaic-five-basic-phases-of-lean-six-sigma/
+
+
+\begin{document}
+%---------------------------%
+\begin{frame}
+\tableofcontents
+\end{frame}
+%---------------------------%
+
+\section{The Seven Basic Tools of Quality }
+
+%---------------------------------------------------------------------%
+\begin{frame} %GOOD
+\frametitle{The Seven Basic Tools of Quality}
+\Large
+\begin{itemize}
+\item The Seven Basic Tools of Quality refers to a fixed set of graphical 
+techniques identified as being most helpful in troubleshooting issues related to quality.
+\item 
+They are called basic because they are suitable for people with little formal training 
+in statistics and because they can be used to solve the vast majority of quality-related 
+issues.
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------%
+\begin{frame}
+\frametitle{The Seven Basic Tools of Quality}
+\Large
+The seven tools are:
+
+\begin{enumerate}
+\item Cause-and-effect diagram (also known as the "fishbone" or Ishikawa diagram)
+\item Check sheet
+\item Control chart
+\item Histogram
+\item Pareto chart
+\item Scatter diagram
+\item Stratification (alternately, flow chart or run chart)
+\end{enumerate}
+\end{frame}
+%---------------------------------------------------------------------%
+\begin{frame}
+\frametitle{The Seven Basic Tools of Quality}
+\Large
+\begin{itemize}
+\item The designation arose in postwar Japan, inspired by the seven famous weapons of 
+Benkei. It is believed to have been introduced by Kaoru Ishikawa who in turn was influenced by a 
+very famous series of lectures W. Edwards Deming had given to Japanese engineers and scientists in 
+1950.
+\item At that time, companies that had set about training their workforces in statistical quality control found that the complexity of the subject intimidated the vast majority of their workers and scaled back training to focus primarily on simpler methods which suffice for most quality-related issues.
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------%
+\begin{frame}
+\frametitle{The Seven Basic Tools of Quality}
+\Large
+\begin{itemize}
+\item The Seven Basic Tools stand in contrast to more advanced statistical methods such as survey sampling, acceptance sampling, statistical hypothesis testing, design of experiments, multivariate analysis, and various methods developed in the field of operations research.
+\item The Project Management Institute references the Seven Basic Tools in \textit{A Guide to 
+the Project Management Body of Knowledge} as an example of a set of general tools useful 
+for planning or controlling project quality.
+\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------%
+\section{Ishikawa Diagrams}
+\begin{frame}
+\frametitle{Ishikawa Diagrams}
+\Large
+\begin{itemize}
+\item Ishikawa cause-and-effect diagrams are causal diagrams proposed by Kaoru Ishikawa (1968) 
+that show the causes of a specific event.
+\item Common uses of the Ishikawa diagram are product design and quality defect 
+prevention, to identify potential factors causing an overall effect. Each cause or reason for imperfection is a source of variation. 
+\end{itemize}
+\end{frame}
+%--------------------------------------------------------------------%
+\begin{frame}
+\frametitle{Ishikawa Diagrams}
+\Large
+\begin{itemize}
+\item Causes are usually grouped into major categories to identify these sources of 
+variation. 
+\item The categories typically include: People, Methods, Machines, Materials, Measurements, Environment.
+\end{itemize}
+\end{frame}
+%--------------------------------------------------------------------%
+\section{\texttt{qualityTools} Package}
+\begin{frame}
+\frametitle{\texttt{qualityTools R} Package}
+\begin{itemize}
+\item This Package contains methods associated with the Define, Measure, Analyze, Improve and Control (i.e. DMAIC) cycle of the Six Sigma Quality Management methodology.
+\item It covers distribution fitting, normal and non-normal process capability indices, techniques for Measurement Systems Analysis especially gage capability indices and Gage Repeatability (i.e Gage RR) and Reproducibility studies, factorial and fractional factorial designs as well as response surface methods including the use of desirability functions. 
+\end{itemize}
+\end{frame}
+
+%--------------------------------------------------------------------%
+\begin{frame}
+\frametitle{\texttt{qualityTools R} Package}
+\begin{itemize}
+\item Improvement via Six Sigma is project based strategy that covers 5 phases: 
+\begin{description}
+\item[Define] - Pareto Chart; 
+\item[Measure] - Probability and QQ Plots, Process Capability Indices for various distributions and Gage RR 
+\item[Analyze] - Pareto Chart, Multi-Vari Chart, Dot Plot; 
+\item[Improve] - Full and fractional factorial, response surface and mixture designs as well as the desirability approach for simultaneous optimization of more than one response variable. Normal, Pareto and Lenth Plot of effects as well as Interaction Plots; 
+\item[Control] - Quality Control Charts can be found in the \textbf{qcc} package. 
+\end{description}
+
+\item The focus is on teaching the statistical methodology used in the Quality Sciences.
+\end{itemize}
+\end{frame}
+%--------------------------------------------------------------------%
+\section{Introduction to Six Sigma}
+\begin{frame}
+\Large
+\begin{itemize}
+\item Six Sigma projects follow two project methodologies inspired by 
+Deming's \textbf{Plan-Do-Check-Act} Cycle. 
+\item These methodologies, composed of five phases each, bear the acronyms DMAIC and DMADV.[9]
+
+\item DMAIC is used for projects aimed at improving an existing business process. DMAIC is pronounced as "duh-may-ick".
+\item DMADV is used for projects aimed at creating new product or process designs. DMADV is pronounced as "duh-mad-vee".
+\end{itemize}
+\end{frame}
+%--------------------------------------------------------------------%
+%------------------------------------------------------------------------------------------%
+
+% http://en.wikipedia.org/wiki/DMAIC
+% http://www.goleansixsigma.com/dmaic-five-basic-phases-of-lean-six-sigma/
+
+
+\begin{document}
+%---------------------------%
+%--------------------------------------------------------------------%
+\section{\texttt{qualityTools} Package}
+\begin{frame}
+
+\frametitle{\texttt{qualityTools R} Package}
+\begin{itemize}
+\item This Package contains methods associated with the Define, Measure, Analyze, Improve and Control (i.e. DMAIC) cycle of the Six Sigma Quality Management methodology.
+\item It covers distribution fitting, normal and non-normal process capability indices, techniques for Measurement Systems Analysis especially gage capability indices and Gage Repeatability (i.e Gage RR) and Reproducibility studies, factorial and fractional factorial designs as well as response surface methods including the use of desirability functions. 
+\end{itemize}
+\end{frame}
+
+
+%--------------------------------------------------------------------%
+\begin{frame}
+\frametitle{\texttt{qualityTools R} Package}
+
+\begin{itemize}
+\item Improvement via Six Sigma is project based strategy that covers 5 phases (with \texttt{qcc})/: 
+\begin{description}
+\item[Define] - Pareto Chart; 
+\item[Measure] - Probability and QQ Plots, Process Capability Indices for various distributions and Gage RR 
+\item[Analyze] - Pareto Chart, Multi-Vari Chart, Dot Plot; 
+\item[Improve] - Full and fractional factorial, response surface and mixture designs as well as the desirability approach for simultaneous optimization of more than one response variable. Normal, Pareto and Lenth Plot of effects as well as Interaction Plots; 
+\item[Control] - Quality Control Charts can be found in the \textbf{qcc} package. 
+\end{description}
+
+\item The focus is on teaching the statistical methodology used in the Quality Sciences.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\textbf{7 Basic Tools of Quality }
+\begin{description}
+\item[Cause-and-effect diagram]: Identifies many possible causes for an effect or problem and sorts ideas into useful categories.
+(also called Ishikawa or fishbone chart)
+
+\item[Check sheet]: A structured, prepared form for collecting and analyzing data; a generic tool that can be adapted for a wide variety of purposes.
+
+\item[Control charts]: Graphs used to study how a process changes over time.
+
+\item[Histogram]: The most commonly used graph for showing frequency distributions, or how often each different value in a set of data occurs.
+\end{frame}
+%==============================%
+\begin{frame}
+\item[Pareto chart]: Shows on a bar graph which factors are more significant.
+
+\item[Scatter diagram]: Graphs pairs of numerical data, one variable on each axis, to look for a relationship.
+\item[Stratification]: A technique that separates data gathered from a variety of sources so that patterns can be seen (some lists replace “stratification” with “flowchart” or “run chart”).
+\end{description}
+\end{frame}
+%--------------------------------------------------------------------%
+\end{document}

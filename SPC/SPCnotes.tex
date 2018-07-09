@@ -1,0 +1,151 @@
+% %  - SEE C:\Documents and Settings\kevin.obrien\My Documents\My Dropbox\Public\SPC and IndStats
+% %  - File is called SPC notes
+%=================================================================================== %
+\begin{frame}
+\textbf{Process capability} \\
+Process capability compares the output of an in-control process to the predetermined specification limits by using capability indices. The comparison is made by forming the ratio of the spread between the process specifications (the specification "width") to the spread of the process values, as measured by 6 process standard deviation units (the process "width"). 
+
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+
+\textbf{Process Capability Indices}\\
+We are often required to compare the output of a stable process with the process specifications and make a statement about how well the process meets specification. To do this we compare the natural variability of a stable process with the process specification limits.
+There are several statistics that can be used to measure the capability of a process: Cp, Cpk, Cpm. 
+Most capability indices estimates are valid only if the sample size used is 'large enough'. Large enough is generally thought to be about 50 independent data values. 
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+The Cp, Cpk, and Cpm statistics assume that the population of data values is normally distributed. Assuming a two-sided specification, if  and  are the mean and standard deviation, respectively, of the normal data and USL, LSL, and T are the upper and lower specification limits and the target value, respectively, then the population capability indices are defined as follows:
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+In this class
+•	Control Charts for Proportions (using qcc package)
+•	CUSUM charts
+•	OC charts and EWMA (brief discussion)
+•	Process Capability Indices
+•	Control charts for attributes mainly differ from the previous examples in that we need to provide sample sizes through the size argument.
+value, respectively, then the population capability indices are defined as follows: 
+Definitions of various process capability indices 
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+\frametitle{Orangejuice Data set}
+\begin{itemize}
+\item Frozen orange juice concentrate is packed in 6-oz cardboard cans. 
+\item These cans are formed on a machine by spinning them from cardboard stock and attaching a metal bottom panel. 
+\item A can is then inspected to determine whether, when filled, the liquid could possible leak either on the side seam or around the bottom joint. 
+\item If this occurs a can is considered nonconforming. 
+\item The data were collected as 30 samples of 50 cans each at half-hour intervals over a three-shift period in which the machine was in continuous operation. 
+\end{itemize}
+
+
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+From sample 15 used a new batch of cardboard stock was punt into production. Sample 23 was obtained when an inexperienced operator was temporarily assigned to the machine. 
+After the first 30 samples, a machine adjustment was made. Then further 24 samples were taken from the process.
+
+•	
+> orangejuice
+   sample  D size trial
+1       1 12   50  TRUE
+2       2 15   50  TRUE
+3       3  8   50  TRUE
+…
+…
+30     30  6   50  TRUE
+31     31  9   50 FALSE
+32     32  6   50 FALSE
+…
+…
+…
+53     53  3   50 FALSE
+54     54  5   50 FALSE
+\end{frame}
+%=================================================================================== %
+\begin{frame}•	
+Obj.A <- qcc(D[trial], sizes=size[trial], type="p")
+•	
+•	
+•	 
+Obj.B <- qcc(D, sizes=size, type="p")
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+
+Cu Sum Charts
+A CUSUM Chart is a control chart for variables data which plots the cumulative sum of the deviations from a target. A V-mask is used as control limits. Because each plotted point on the Cu Sum Chart uses information from all prior samples, it detects much smaller process shifts than a normal control chart would. Cu Sum Charts are especially effective with a subgroup size of one. Run tests should not be used since each plotted point is dependent on prior points as they contain common data values.
+\end{frame}
+%=================================================================================== %
+\begin{frame}\\
+When to Use a Cu Sum Chart
+
+\begin{itemize}
+\item Cu Sum (or Cumulative Sum) Charts are generally used for detecting small shifts in the process mean. They will detect shifts of .5 sigma to 2 sigma in about half the time of Shewhart charts with the same sample size (Montgomery 1991). 
+\item The point at which shifts occur is easy to detect by an inflection in the plotted points. They are, however, slower in detecting large shift in the process mean. 
+\item In addition, typical run tests cannot be used because of the dependence of data points.
+\end{itemize}
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+Cu Sum Charts may also be preferred when the subgroups are of size n=1. In this case, an alternative chart might be the Individual X Chart, in which case you would need to estimate the distribution of the process in order to define its expected boundaries with control limits. The advantage of Cu Sum, EWMA and Moving Average charts is that each plotted point includes several observations, so you can use the central limit theorem to say that the average of the points (or the moving average in this case) is normally distributed and the control limits are clearly defined.
+\end{frame}
+%=================================================================================== %
+\begin{frame}\\
+As with other control charts, Cu Sum charts are used to monitor processes over time. The x-axes are time based, so that the charts show a history of the process. For this reason, you must have data that is time-ordered; that is, entered in the sequence from which it was generated. If this is not the case, then trends or shifts in the process may not be detected, but instead attributed to random (common cause) variation.
+Exponentially Weighted Moving Average (EWMA) Charts
+http://qualityamerica.com/Knowledgecenter/statisticalprocesscontrol/when_to_use_an_ewma_chart.asp
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+An EWMA (Exponentially Weighted Moving-Average) Chart is a control chart for variables data (data that is both quantitative and continuous in measurement, such as a measured dimension or time). It plots weighted moving average values. A weighting factor is chosen by the user to determine how older data points affect the mean value compared to more recent ones. Because the EWMA Chart uses information from all samples, it detects much smaller process shifts than a normal control chart would.
+
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+\frametitle{Statistical Process Control}
+\textbf{Average Run Length: }
+
+
+Average Run Length is defined as the number of points that, on average, will be plotted on a control chart before an out of control condition is indicated (for example a point plotting outside the control limits).
+•	cusum - Cumulative Sum 
+•	OC Curves
+•	Type II error
+•	Experimentally Weighted Moving Average 
+•	Definition 
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+OC Curves or Operating Characteristic Curves refer to a graph of attributes of a sampling plan considered during management of a project which depicts the percent of lots or batches which are expected to be acceptable under the specified sampling plan and for a specified process quality. The specified sampling plan may be singular, sequential or iterative and may be using a particular size of a sample depending upon the demands of the project and could yield the results of acceptance or rejection based on a specified criteria.
+•	It helps in the selection of sampling plans
+•	It aids in the selection of plans that are effective in reducing risks.
+•	It can help in keeping the high cost of inspection low.
+•	There are two ways of calculating the OC curves.
+•	Binomial Distribution
+•	Poisson Formula
+•	Type A - Gives the probability of acceptance for an individual lot coming from finite production. Type B - Gives the probability of acceptance for lots coming from a continuous process. Type C - Gives the long-run percentage of product accepted during the sampling phase.
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+The OC Curve is used in sampling inspection. It plots the probability of accepting a batch of items against the quality level of the batch. 
+The figure shows an 'OC' (Operating Characteristic) Curve for a sample of 50 items taken from a batch of 2000 and using a critical acceptance number 'c' of 2 (the batch will be accepted if there are two or less defectives in the sample). From the curve you can see that there is about a 23% probability of accepting a batch that contains 8% of defective items.
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+ The Average Run Length is the number of points that, on average, will be plotted on a control chart before an out of control condition is indicated (for example a point plotting outside the control limits).
+If the process is in control:
+ 
+If the process is out of control:
+ 
+Where α is the probability of a Type I error and β the probability of a Type II error.
+\end{frame}
+%=================================================================================== %
+\begin{frame}
+
+Operating characteristic function
+An operating characteristic (OC) curve provides information about the probability of not detecting a shift in the process. This is usually referred to as the type II error, that is, the probability of erroneously accepting a process as being “in control”.
+\end{frame}
+%=================================================================================== %
+\end{document}

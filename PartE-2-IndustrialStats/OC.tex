@@ -1,0 +1,160 @@
+\documentclass{beamer}
+
+\usepackage{framed}
+\usepackage{subfiles}
+\usepackage{graphics}
+\usepackage{newlfont}
+\usepackage{eurosym}
+\usepackage{amsmath,amsthm,amsfonts}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{multicol}
+
+
+\begin{document}
+%==============================%
+\begin{frame}
+	\frametitle{ What is acceptance sampling? }
+	\large
+	\begin{itemize}
+		\item Acceptance sampling is a major component of quality control and is useful when the cost of testing is high compared to the cost of passing a defective item or when testing is destructive. It is a compromise between doing 100\% inspection and no inspection at all. 
+		\item Acceptance sampling can be done on attributes or measurements of the product.
+		\item You can use acceptance sampling to develop inspection plans that enable you to accept or reject a particular lot of incoming material based on the 
+		data from a representative sample.
+	\end{itemize}
+	
+\end{frame}
+
+%==============================%
+\begin{frame}
+	
+	\noindent \textbf{What is acceptable quality level (AQL)?}
+	
+	\begin{itemize}
+		\item Acceptable quality level is the poorest level of quality from a supplier's process that would be considered acceptable as a process average. 
+		\item You want to design a sampling plan that accepts a particular lot of product at the AQL frequently.
+	\end{itemize}
+	
+	
+	
+\end{frame}
+%==============================%
+\begin{frame}
+	
+	\noindent \textbf{What is acceptable quality level (AQL)?}
+	
+	\begin{itemize}
+		\item 	For example, you receive a shipment of microchips and your acceptable quality level (AQL) is 1.5\%. 
+		
+		\item Realizing that you won't always make the correct decision (sampling risk), you set the producer's risk (alpha) at 0.05. 
+		
+		\item This means that approximately 95\% of the time you will correctly accept a lot with a quality level of 1.5\% or better and 5\% of the time you will incorrectly reject the lot with a quality level of 1.5\% or better.
+	\end{itemize}
+
+	
+\end{frame}
+
+%==============================%
+\begin{frame}
+	
+	
+	\noindent \textbf{What is rejectable quality level (RQL)?}
+	
+	\begin{itemize}
+		\item Rejectable quality level (RQL, also called lot tolerance percent defective, LTPD, and limiting quality, LQ) is the poorest level of quality that the consumer is willing to tolerate in an independent lot.
+		\item  You want to design a sampling plan that rejects a particular lot of product at the RQL frequently.
+	\end{itemize}
+	
+	
+\end{frame}
+
+%==============================%
+\begin{frame}
+	
+	
+	\noindent \textbf{What is rejectable quality level (RQL)?}
+	
+	\begin{itemize}
+		\item For example, you receive a shipment of microchips and your rejectable quality level (RQL) is 6.5%. 
+		\item 
+		Realizing that you won't always make the correct decision (sampling risk) you set the consumer's risk (beta) at 0.10. 
+		\item 
+		This means that, at least 90\% of the time, you will reject a lot with a quality level of 6.5\% or worse. 
+		\item 
+		10\% of the time or less, you will accept the lot with a quality level of 6.5\% or worse.
+	\end{itemize}
+\end{frame}
+%==============================%
+\begin{frame}
+	\large
+	
+	\begin{framed}
+		
+		The AQL describes what the sampling plan will accept, whereas the rejectable quality level (RQL) describes what the sampling plan will reject.
+		
+	\end{framed}
+	
+\end{frame}
+
+%==============================%
+\begin{frame}
+	\frametitle{Example of an attribute acceptance sampling plan}
+	\begin{itemize}
+		\item 
+		For example, you receive a shipment of 10,000 microchips. You either cannot or do not want to inspect the entire shipment.
+		\item An attribute sampling plan can help you determine how many microchips you need to examine (sample size) and how many defects are allowed in that sample (acceptance number).
+		\item 
+		In this case, suppose your acceptable quality level (AQL) is 1.5\% and the rejectable quality level (RQL) is 5.0\%, and you assume alpha = 0.05 and beta = 0.1. (Type I and Type II error).
+		\item You can generate a sampling plan that indicates that you need to inspect 206 chips. If 6 or less of the 206 inspected microchips are defective, you can accept the entire shipment. 
+		\item 
+		If 7 or more chips are defective, you must reject the entire shipment.
+	\end{itemize}
+\end{frame}
+%==============================%
+\begin{frame}
+	
+	\frametitle{What is an operating characteristic (OC) curve?}
+	
+	\begin{itemize}
+		\item The operating characteric (OC) curve depicts the discriminatory power of an acceptance sampling plan. 
+		\item The OC curve plots the probabilities of accepting a lot versus the fraction defective.
+		\item 
+		When the OC curve is plotted, the sampling risks are obvious. You should always examine the OC curve before using a sampling plan.
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\begin{figure}
+\centering
+\includegraphics[width=0.99\linewidth]{OCcurve1}
+\end{figure}
+
+\end{frame}
+%==============================%
+\begin{frame}
+	
+	
+	\frametitle{Use an OC curve to choose an appropriate sampling plan}
+	
+	\begin{itemize}
+		\item You can compare OC curves to help choose the appropriate sampling plan. 
+		\item In this case, the shift supervisor thinks sampling 52 rollers from 500 is too much. 
+		\item You can develop curves for various sample sizes and acceptance numbers to illustrate the increased risk.
+	\end{itemize}
+\end{frame}
+%==============================%
+\begin{frame}
+	
+	
+	\frametitle{Use an OC curve to choose an appropriate sampling plan}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.90\linewidth]{OCcurve2}
+\end{figure}
+
+		\begin{itemize}
+		\item If the sample size is 35 (red line) and the \% defective is 10\%, you now have a 0.306 probability of accepting this lot.
+	\end{itemize}
+\end{frame}
+\end{document}
