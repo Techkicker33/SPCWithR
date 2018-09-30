@@ -1,0 +1,432 @@
+	\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{framed}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode"CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 201113:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{MS4222} \rhead{Kevin O'Brien} \chead{Normal Distribution} %\input{tcilatex}
+
+\begin{document}
+%%  - Chapter 2 / Page 17
+
+\section{ Multivariate Control Charts }
+With the enhancements in data acquisition systems it is usual to deal with processes
+with more than one correlated quality characteristic to be monitored. A common
+practice is to control the stability of the process using univariate control charts. This
+practice increases the probability of false alarm of special cause of variation.
+Therefore, the analysis should be performed through a multivariate approach;
+that is, the variables must be analyzed together, not independently.
+In this chapter we present the multivariate normal distribution, the data structure
+of the multivariate problems dealt in this book, the mult.chart function that allows
+the computation in R, and the most used multivariate control charts:
+
+\begin{itemize}
+\item The control ellipsoid or w2 control chart
+\item The T2 or Hotelling chart
+\item The Multivariate Exponentially Weighted Moving Average (MEWMA) chart
+\item The Multivariate Cumulative Sum (MCUSUM) chart
+\item The chart based on Principal Components Analysis (PCA)
+\end{itemize}
+
+
+%-----------------------------------------------%
+
+\subsection{2.1 The Multivariate Normal Distribution}
+The multivariate normal distribution (MVN) is the core of the multivariate statistical
+analysis. This is due to the fact that the sampling distributions of multivariate
+distributions exhibit approximately normality due to the central limit theorem.
+In the univariate case if a random variable is normally distributed with mean m
+and variance s2 it has a density function:
+
+\[  EQUATION   \]
+where $-1<x<1$:
+
+% E. Santos-Ferna´ndez, Multivariate Statistical Quality Control Using R,
+% SpringerBriefs in Statistics 14, DOI 10.1007/978-1-4614-5453-3_2,
+% # Springer Science+Business Media New York 2012
+
+
+%====================================%
+
+
+%=====================================%
+
+Example 2.1
+In order to perform in R a graphical representation of a bivariate normal distribution
+with mean vector m = 0
+0
+ 
+and covariance matrix S = 10 3
+3 6
+ 
+we have
+
+\begin{verbatim}
+> mu <- c(0,0)
+> sigma <- matrix(c(10,3,3,6),2,2)
+> rho <- sigma[1,2] / (sqrt(sigma[1,1] * sigma[2,2]))
+> # Defining the mean vector, the covariance matrix, 
+>  # and the correlation coefficient:
+> var1 <- seq(-12,12,.7)
+> var2 <- var1
+> f <- matrix(0, length(var1), length(var1))
+> for( i in 1:length(var1)){
+> for(j in 1:length(var1)){
+> f[i,j] <- 1/(2 * pi * sqrt(sigma[1,1] * sigma[2,2] * (1-rho ^     2)))*exp(-1 /
+(2 * (1-rho ^ 2)) * ((var1[i] - mu[1]) ^ 2 / sigma[1,1] + (var2[j] - mu[2]) ^ 2 /
+sigma[2,2]-2 * rho * ((var1[i] - mu[1]) * (var2[j] - mu[2])) / (sqrt(sigma[1,1]) *
+sqrt(sigma[2,2]))))}}
+\end{verbatim}
+
+%% MSQCChap2RCodeOutput1
+\begin{framed}
+\begin{verbatim}
+> persp(var1, var2, f, xlab = "Variable 1", ylab = "Variable 2", zlab = "f(var1,
+var2)", theta = 30, phi = 30, r = 50, d = 0.2, expand = 0.6, ltheta = 90, lphi =
+180, nticks = 4)
+
+\end{verbatim}
+\end{framed}
+Then R shows the bivariate density function (Fig. 2.1a).
+Moreover it is possible to represent in a two-dimensional form using a contour
+plot (Fig. 2.1b):
+> contour(var1, var2, f, xlab = "Variable 1", ylab = "Variable 2", nlevels = 8,
+drawlabels = F, xlim = c(-8,8), ylim = c(-8,8))
+
+
+%--------------------------------------------------------------%
+
+
+%--------------------------------------------------------------%
+\section{2.3 \texttt{The mult.chart} Function}
+The performing of the multivariate control chart in R can be carried out with the
+function \texttt{mult.chart} which is a general function that allows to compute the most
+accepted and diversified continuous multivariate chart such as
+
+\begin{itemize}
+	\item w2
+	\item Hotelling T2
+	\item MEWMA
+	\item MCUSUM according to Crosier (1988)
+	\item MCUSUM by Pignatiello and Runger (1990)
+\end{itemize}
+
+%% 2.3 The mult.chart Function 
+
+%% Page 21
+
+
+%--------------------------------------------------------------%
+
+“mewma,” “\texttt{mcusum},” or “\texttt{mcusum2}” in the same order previously introduced.
+For more details about the function see the package manual:
+\begin{verbatim}
+> help(package = "MSQC")
+\end{verbatim}
+
+In the function x must be a matrix or an array and jointly with type are the only compulsory arguments.
+
+Other important functionalities are the Phase that can be I or II (being I for default) and the significance level (alpha) fixed in 0.01.
+
+As it is shown in the next section, the covariance matrix (S) and mean vector (Xmv) can be entered to be used in Phase II.
+
+Finally the function \texttt{mult.chart} returns:
+\begin{itemize}
+\item  The $T^2$ statistics
+\item The Upper Control Limit (UCL)
+\item The sample covariance matrix (S)
+\item The mean vector (Xmv)
+\item And if any point falls outside of the UCL and its decomposition
+\end{itemize}
+The execution of the function takes few hundredth of a second as can be tested by
+\begin{verbatim}
+> system.time(mult.chart(dowel1, type = "chi", alpha = 0.05))
+\end{verbatim}
+
+
+
+\subsection*{Example 2.2}
+To illustrate the construction of an ellipsoid contour consider the dataset called
+dowel that comprises 40 samples from two correlated quality characteristics (diameter
+and length) collected from a manufacturing process of a dowel pin.
+
+
+
+To call the dataset, just use
+
+> data("dowel1")
+
+The construction of the control ellipse for dowel1 results as follows. Setting the significance level:
+\begin{verbatim}
+ alpha <- 0.05 and
+ p <- ncol(dowel1)
+ # Estimate mean vector and the covariance matrix
+ Xmv <- colMeans(dowel1)
+ 
+\end{verbatim}
+The function colMeans was used directly due to the fact that this is a problem of
+individual observations:
+
+> S <- covariance(dowel1)
+So we have
+m0 = ½ 0:50 1:00  and S = 4.91e - 05 8:58e - 05
+8.58e - 05 4.20e - 04
+ 
+.
+The computation of the eigenvalues and eigenvectors is based on the R function
+\begin{verbatim}
+eigen:
+> DDe <- eigen(S)$values
+> Ue <- eigen(S)$vectors
+\end{verbatim}
+
+For more details see help function.
+Then we have
+
+l0 =½4:39e-04 3:02e-05, e1
+0 =½0:22 -0:98, and e2
+0 =½-0:98 0:22.
+
+Plotting the ellipsoid origin given by Xmv. (at 0.50, 1.00) with the respective
+axes labels and ranges:
+\begin{framed}
+\begin{verbatim}
+> plot(Xmv[1], Xmv[2], xlim = c(0.46,0.54), ylim = c(0.95,1.06), xlab = "diameter",ylab = "length",pch = 3)
+\end{verbatim}
+\end{framed}
+The direction of the ellipsoid axes is given by the eigenvectors:
+> inc <- atan ((Xmv[2] + Ue[2,1] - Xmv[2]) / (Xmv[1] + Ue[1,1] - Xmv[1]))
+Then we must compute the lengths regarding the x- and y-axes as follows:
+\begin{framed}
+\begin{verbatim}
+> b <- (sqrt(DDe[1]) * sqrt(qchisq(1 - alpha,p))) * sin(inc)
+> a <- (sqrt(DDe[1]) * sqrt(qchisq(1 - alpha,p))) * cos(inc)
+> d <- (sqrt(DDe[2]) * sqrt(qchisq(1 - alpha,p))) * sin(inc)
+> c <- (sqrt(DDe[2]) * sqrt(qchisq(1 - alpha,p))) * cos(inc)
+\end{verbatim}
+\end{framed}
+Finally, we trace the axes using
+\begin{framed}
+\begin{verbatim}
+> arrows(Xmv[1], Xmv[2], Xmv[1] + a, Xmv[2] + b)
+> arrows(Xmv[1], Xmv[2], Xmv[1] - a, Xmv[2] - b)
+> arrows(Xmv[1], Xmv[2], Xmv[1] - d, Xmv[2] + c)
+> arrows(Xmv[1], Xmv[2], Xmv[1] + d, Xmv[2] - c)
+\end{verbatim}
+\end{framed}
+%================================================%
+
+The ellipse results by connecting the axes extremes.
+Fortunately it is relatively easy to draw an ellipse in R, making use of this
+algorithm:
+> angle <- seq(0, 2 * pi, length.out = 200)
+> ch <- cbind(sqrt(qchisq(1 - alpha,2)) * cos(angle), sqrt(qchisq(1 - alpha,2)) *
+sin(angle))
+> lines(t(Xmv - ((Ue %*% diag(sqrt(DDe))) %*% t(ch))),type = "l")
+Figure 2.3a shows the result.
+This procedure is known as confidence ellipsoid. Figure 2.3b shows the addition
+of the points of the dowel1 array:
+> points(dowel1)
+Obtaining no points outside the ellipse, there is no evidence of special causes;
+therefore the process is in-control. Notice that if the limits from the univariate
+individual control chart are plotted, how much this area differs to the confidence
+ellipse. In fact, four points fall outside to this area (Fig. 2.4).
+The difficulty to identify the points beyond the confidence ellipsoid is one of the
+main drawbacks of the tool, although it can be solved by inserting the sample
+number in plot when the amount of points is not large.
+Another disadvantage is the complexity to construct the ellipsoid when p > 2
+which can be solved using the w2 control chart that results by plotting the test
+statistics:
+\[EQUATION\]
+
+;p; (2.19)
+where n is the sample size and the upper control limit:
+UCL = w2
+a;p: (2.20)
+0.47 0.48
+a b
+0.49 0.50 0.51 0.52 0.53
+0.95 1.00 1.05
+diameter
+length
+0.47 0.48 0.49 0.50 0.51 0.52 0.53
+0.95 1.00 1.05
+diameter
+length
+Fig. 2.3 (a) Confidence ellipse with the axes for the dowel1 dataset. (b) Scatterplot for the dowel1
+dataset with the confidence ellipse
+%% - 24 2 Multivariate Control Charts
+%=================================================%
+
+When m and S are estimated through a sufficiently large sample then the w2 chart
+can be used although the parameters are unknown.
+Through the function mult.chart
+> mult.chart(dowel1, type = "chi", alpha = 0.05)
+The function returns (Fig. 2.5):
+Showing results alike to the control ellipsoid. An advantage of this chart is that it
+allows the evolution of the samples along time.
+0.47 0.48 0.49 0.50 0.51 0.52 0.53
+0.94 0.96 0.98 1.00 1.02 1.04 1.06
+diameter
+length
+LCL UCL
+LCL
+UCL
+Fig. 2.4 Scatterplot for
+the dowel1 dataset with
+the confidence ellipse
+and the Shewhart control
+limits
+0 10 20 30 40
+0
+1
+2
+3
+4
+5
+6
+Sample
+T2
+UCL= 5.99
+[1] "Chi-squared Control Chart"
+$ucl
+[1] 6
+$t2
+[1,] 1.61
+[2,] 0.30
+…
+[39,] 1.58
+[40,] 1.64
+$Xmv
+[1] 0.50 1.00
+$covariance
+[,1] [,2]
+[1,] 4.91e -05 8.59e-05
+[2,] 8.59e -05 4.20e-04
+Fig. 2.5 w2 control chart for the dowel1 dataset
+2.4 Contour Plot and w2 Control Chart 25
+%% kevin.obrien@ul.ie
+
+%===============================================================%
+%===============================================================%
+
+%% Page 27
+
+Finally they are passed in the function mult.chart:
+> mult.chart(dowel2, type = "chi", Xmv = vec, S = mat, alpha = 0.05)
+The fourth sample falls beyond the UCL; as a consequence, there is evidence of
+special causes, and then the process is out-of-control (Fig. 2.7).
+\section*{2.5 Hotelling T2 Control Chart (Phase I)}
+The origin of the T2 control chart dates back to the pioneer works of Harold Hotelling
+who applied this method to the bombsight problem in Second World War. The
+Hotelling (1947) procedure has become without doubt the most applied in multivariate
+process control and it is the multivariate analogous of the Shewhart control chart.
+For that reason, it is also known as multivariate Shewhart control chart.
+Often in practice the parameters m and S are unknown and consequently must be
+estimated across the unbiased estimators -x and S. Based on the multivariate
+generalization of the t statistic from univariate normal theory:
+t = -x - m
+S=
+ffiffiffi
+n
+p (2.21)
+making
+t2 =
+ð-x - mÞ2
+S2=n
+= nð-x - mÞ S2  -1ð-x - mÞ; (2.22)
+0 5 10 15 20 25 30
+0
+2
+4
+6
+8
+Sample
+T2
+UCL= 5.99
+Fig. 2.7 w2 control chart
+in Phase II for the dowel2
+dataset
+2.5 Hotelling T2 Control Chart (Phase I) 27
+kevin.obrien@ul.ie
+
+so the generalization results in
+T2 = nðX - XÞ0ðSÞ-1ðX - XÞ (2.23)
+with - X and S being the vector of means and the covariance matrix, respectively.
+The statistics T2 follows an F distribution with p and (mn - m - p + 1) degrees
+of freedom. Therefore for establishing the control in Phase I the UCL results in
+UCL = pðm - 1Þðn - 1Þ
+mn - m - p þ 1
+Fa; p; mn-m-pþ1: (2.24)
+While for monitoring future observations (Phase II) the limit is given by
+UCL = pðm þ 1Þðn - 1Þ
+mn - m - p þ 1
+Fa; p; mn-m-pþ1: (2.25)
+Here, (2.25), the number of samples (m) refers to the preliminary samples taken
+to establish the in-control state (Phase I). Notice that this chart lacks lower control
+limits (LCL) analogously to the w2 chart.
+This chart is employed in introductory multivariate studies and has a good
+performance in detection of large shifts in the mean.
+According to Lowry and Montgomery (1995) the application of this chart
+requires a number of quality characteristics between 2 and 10, taking more than
+20 samples (often more than 50) of size 2, 3, or 10. These values are sometimes
+limited by the very nature of the problem, though.
+The following example explains the construction of this chart.
+Example 2.3
+In the manufacturing process of a specific carbon fiber tubing three correlated
+quality characteristics are measured: inner diameter, thickness, and length of the
+tubes in inches. The dataset named carbon1 contains the information of 30 samples
+of size 8 taken and summarized in Table 2.1.
+The sample mean vector, sample covariance, and correlation matrix result as
+follows:
+\begin{verbatim}
+-x =
+0:99
+1:04
+49:98
+2
+4
+3
+5; S  100 =
+0:25 0:36 0:67
+0:36 1:45 1:02
+0:67 1:02 5:92
+2
+4
+3
+5; r =
+1 0:63 0:57
+0:63 1 0:38
+0:57 0:38 1
+2
+4
+3
+5:
+\end{verbatim}
+It can be easily appreciated the direct correlation among the variables; being
+significant between the inner diameter with the others.
+As we are in the presence of a trivariate process, it is possible a spatial
+representation. Figure 2.8 shows the three-dimensional scatterplot with the 99%
+ellipsoid. All the points of the swarm are inside the ellipsoid.
+A scatterplot matrix is presented below and corroborates the information offered
+by the correlation matrix about the direct correlation between variables (Fig. 2.9)):
+pairs(carbon1,labels=c("inner diameter", "thickness", "length"))
+28 2 Multivariate Control Charts
+\end{document}
+%=======================================================%

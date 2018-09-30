@@ -1,16 +1,165 @@
-In statistical quality control, the EWMA chart (or exponentially weighted moving average chart) is a type of control chart used to monitor either variables or attributes-type data using the monitored business or industrial process's entire history of output.[1] While other control charts treat rational subgroups of samples individually, the EWMA chart tracks the exponentially-weighted moving average of all prior sample means. EWMA weights samples in geometrically decreasing order so that the most recent samples are weighted most highly while the most distant samples contribute very little.[2]:406
+﻿\documentclass[Charts101.tex]{subfiles}
+\begin{document}
 
-Although the normal distribution is the basis of the EWMA chart, the chart is also relatively robust in the face of non-normally distributed quality characteristics.[2]:412 There is, however, an adaptation of the chart that accounts for quality characteristics that are better modeled by the Poisson distribution.[2]:415 The chart monitors only the process mean; monitoring the process variability requires the use of some other technique.[2]:414
+\begin{frame}
+In statistical quality control, the EWMA chart (or exponentially weighted moving average chart) is a type of control chart 
+used to monitor either variables or attributes-type data using the monitored business or industrial process's entire history of output.
+ While other control charts treat rational subgroups of samples individually, the EWMA chart tracks the exponentially-weighted moving 
+average of all prior sample means. EWMA weights samples in geometrically decreasing order so that the most recent samples are weighted most highly while the most distant samples contribute very little.[2]:406
 
+Although the normal distribution is the basis of the EWMA chart, the chart is also relatively robust in the face of non-normally 
+distributed quality characteristics.[2]:412 There is, however, an adaptation of the chart that accounts for quality characteristics that are better modeled by the Poisson distribution.[2]:415 The chart monitors only the process mean; monitoring the process variability requires the use of some other technique.[2]:414
+\end{framed}
+%==================================================================== %
+\begin{frame}
 The EWMA control chart requires a knowledgeable person to select two parameters before setup:
 
-The first parameter is λ, the weight given to the most recent rational subgroup mean. λ must satisfy 0 < λ ≤ 1, but selecting the "right" value is a matter of personal preference and experience. One source recommends 0.05 ≤ λ ≤ 0.25,[2]:411 while another recommends 0.2 ≤ λ ≤ 0.3.[1]
-The second parameter is L, the multiple of the rational subgroup standard deviation that establishes the control limits. L is typically set at 3 to match other control charts, but it may be necessary to reduce L slightly for small values of λ.[2]:406
-Instead of plotting rational subgroup averages directly, the EWMA chart computes successive observations zi by computing the rational subgroup average, {\displaystyle {\bar {x}}_{i}} {\bar  x}_{i}, and then combining that new subgroup average with the running average of all preceding observations, zi - 1, using the specially–chosen weight, λ, as follows:
-
-{\displaystyle z_{i}=\lambda {\bar {x}}_{i}+\left(1-\lambda \right)z_{i-1}} z_{i}=\lambda {\bar  x}_{i}+\left(1-\lambda \right)z_{{i-1}}.
-The control limits for this chart type are {\displaystyle T\pm L{\frac {S}{\sqrt {n}}}{\sqrt {{\frac {\lambda }{2-\lambda }}\lbrack 1-\left(1-\lambda \right)^{2i}\rbrack }}} T\pm L{\frac  {S}{{\sqrt  n}}}{\sqrt  {{\frac  {\lambda }{2-\lambda }}\lbrack 1-\left(1-\lambda \right)^{{2i}}\rbrack }} where T and S are the estimates of the long-term process mean and standard deviation established during control-chart setup and n is the number of samples in the rational subgroup. Note that the limits widen for each successive rational subgroup, approaching {\displaystyle \pm L{\frac {\hat {\sigma }}{\sqrt {n}}}{\sqrt {\frac {\lambda }{2-\lambda }}}} {\displaystyle \pm L{\frac {\hat {\sigma }}{\sqrt {n}}}{\sqrt {\frac {\lambda }{2-\lambda }}}}.[2]:407
-
+The first parameter is \lambda, the weight given to the most recent rational subgroup mean. 
+$\lambda$ must satisfy $0 < \lambda ≤ 1$, but selecting the "right" value is a matter of personal preference and experience. 
+One source recommends 0.05 ≤ \lambda ≤ 0.25,[2]:411 while another recommends 0.2 ≤ \lambda ≤ 0.3.[1]
+\end{framed}
+%==================================================================== %
+\begin{frame}
+The second parameter is L, the multiple of the rational subgroup standard deviation that establishes the control limits. 
+$L$ is typically set at 3 to match other control charts, but it may be necessary to reduce L slightly for small values of \lambda.[2]:406
+Instead of plotting rational subgroup averages directly, the EWMA chart computes successive observations $z_i$ 
+by computing the rational subgroup average, \[{\displaystyle {\bar {x}}_{i}}\]
+, and then combining that new subgroup average with the running average of all preceding observations, zi - 1, using the specially–chosen weight, $\lambda$, as follows:
+\end{framed}
+%==================================================================== %
+\begin{frame}
+\[{\displaystyle z_{i}=\lambda {\bar {x}}_{i}+\left(1-\lambda \right)z_{i-1}} \]
+z_{i}=\lambda {\bar  x}_{i}+\left(1-\lambda \right)z_{{i-1}}.
+The control limits for this chart type are 
+\[{\displaystyle T\pm L{\frac {S}{\sqrt {n}}}{\sqrt {{\frac {\lambda }{2-\lambda }}\lbrack 1-\left(1-\lambda \right)^{2i}\rbrack }}}\]
+%%-  T\pm L{\frac  {S}{{\sqrt  n}}}{\sqrt  {{\frac  {\lambda }{2-\lambda }}\lbrack 1-\left(1-\lambda \right)^{{2i}}\rbrack }} 
+where T and S are the estimates of the long-term process mean and standard deviation established during control-chart setup and
+ n is the number of samples in the rational subgroup. Note that the limits widen for each successive rational subgroup, approaching 
+{\displaystyle \pm L{\frac {\hat {\sigma }}{\sqrt {n}}}{\sqrt {\frac {\lambda }{2-\lambda }}}}
+ {\displaystyle \pm L{\frac {\hat {\sigma }}{\sqrt {n}}}{\sqrt {\frac {\lambda }{2-\lambda }}}}.[2]:407
+\end{framed}
+%==================================================================== %
+\begin{frame}
 The EWMA chart is sensitive to small shifts in the process mean, but does not match the ability of Shewhart-style charts (namely the {\displaystyle {\bar {x}}} {\bar {x}} and R and {\displaystyle {\bar {x}}} {\bar {x}} and s charts) to detect larger shifts.[2]:412 One author recommends superimposing the EWMA chart on top of a suitable Shewhart-style chart with widened control limits in order to detect both small and large shifts in the process mean.[citation needed]
 
 Exponentially weighted moving variance (EWMVar) can be used to obtain a significance score or limits that automatically adjust to the observed data.[3]
+\end{framed}
+%==================================================================== %
+\begin{frame}
+\frametitle{EWMA Control Charts}
+
+\noindent \textbf{EWMA statistic}	
+\begin{itemize}
+\item The Exponentially Weighted Moving Average (EWMA) is a statistic for monitoring the process that averages the data 
+in a way that gives less and less weight to data as they are further removed in time.
+\end{itemize}
+\end{frame}
+%==================================================================== %
+\begin{frame}
+\begin{itemize}
+\item Comparison of Shewhart control chart and EWMA control chart techniques.	
+\item For the Shewhart chart control technique, the decision regarding the state of control of the process at any time, t, depends solely on
+ the most recent measurement from the process and, of course, the degree of "trueness" of the estimates of the control limits from historical data. 
+\item For the EWMA control technique, the decision depends on the EWMA statistic, which is an exponentially weighted average of all 
+prior data, including the most recent measurement.
+\end{itemize}
+\end{frame}
+%==================================================================== %
+\begin{frame}
+\begin{itemize}
+\item
+By the choice of weighting factor, $\lambda$, the EWMA control procedure can be made sensitive to a small or 
+gradual drift in the process, whereas the Shewhart control procedure can only react when the last data point is outside a control limit.
+\end{itemize{
+\end{frame}
+%==================================================================== %
+\begin{frame}
+Definition of EWMA	The statistic that is calculated is:
+\[EWMAt=\lambdaYt+(1−\lambda)EWMAt−1 \mbox{for t = }1,2,…,n\]
+where
+\begin{itemize}
+\item EWMA0 is the mean of historical data (target)
+\item Yt is the observation at time t
+\item n is the number of observations to be monitored including EWMA0
+\item $0< \lambda \leq 1$ is a constant that determines the depth of memory of the EWMA.
+\end{itemize}
+The equation is due to Roberts (1959).
+\end{frame}
+%==================================================================== %
+\begin{frame}
+
+Choice of weighting factor	
+\begin{itemize}
+\item The parameter $\lambda$ determines the rate at which "older" data enter into the calculation of the EWMA statistic. 
+\item A value of $\lambda=1$ implies that only the most recent measurement influences the EWMA (degrades to Shewhart chart). 
+\item Thus, a large value of $\lambda$ (closer to 1) gives more weight to recent data and less weight to older data; a small value of $\lambda$ (closer to 0) gives more weight to older data. 
+\item The value of $\lambda$ is usually set between 0.2 and 0.3 (Hunter) although this choice is somewhat arbitrary. 
+\item Lucas and Saccucci (1990) give tables that help the user select $\lambda$.
+\end{itemize}
+\end{frame}
+%==================================================================== %
+\begin{frame}
+Variance of EWMA statistic	
+
+\begin{itemize}
+\item The estimated variance of the EWMA statistic is approximately
+\[s2ewma=\lambda2−\lambdas2\],
+when $t$ is not small and where s is the standard deviation calculated from the historical data.
+
+\end{frame}
+%==================================================================== %
+\begin{frame}
+
+Definition of control limits for EWMA	
+\begin{itemize}
+\item The center line for the control chart is the target value or EWMA0. The control limits are:
+%UCLLCL==EWMA0+ksewmaEWMA0−ksewma,
+where the factor k is either set equal 3 or chosen using the Lucas and Saccucci (1990) tables. 
+\item The data are assumed to be independent and these tables also assume a normal population.
+\end{itemize}
+\end{frame}
+%==================================================================== %
+\begin{frame}
+As with all control procedures, the EWMA procedure depends on a database of measurements that are truly representative of the process. Once the mean value and standard deviation have been calculated from this database, the process can enter the monitoring stage, provided the process was in control when the data were collected. If not, then the usual Phase 1 work would have to be completed first.
+\end{frame}
+%==================================================================== %
+\begin{frame}
+Example of calculation of parameters for an EWMA control chart	To illustrate the construction of an EWMA control chart, consider a process with the following parameters calculated from historical data:
+EWMA0=50
+s=2.0539
+\end{frame}
+%==================================================================== %
+\begin{frame}[fragile]
+% with \lambda chosen to be 0.3 so that \lambda/(2−\lambda)=0.3/1.7=0.1765 and the square root = 0.4201. 
+
+The control limits are given by
+\[UCLLCL==50+3(0.4201)(2.0539)=52.588450−3(0.4201)(2.0539)=47.4115.\]
+Sample data	Consider the following data consisting of 20 points.
+\begin{verbatim}
+  52.0 47.0 53.0 49.3 50.1 47.0
+  51.0 50.1 51.2 50.5 49.6 47.6
+  49.9 51.3 47.8 51.2 52.6 52.4
+  53.6 52.1
+  \end{verbatim}
+\end{frame}
+%==================================================================== %
+\begin{frame}[fragile]
+EWMA statistics for sample data	These data represent control measurements from the process which is to be monitored using the EWMA control chart technique. 
+The corresponding EWMA statistics that are computed from this data set are:
+\begin{verbatim}
+  50.00 50.60 49.52 50.56 50.18
+  50.16 49.21 49.75 49.85 50.26
+  50.33 50.11 49.36 49.52 50.05
+  49.38 49.92 50.73 51.23 51.94
+  51.99
+ \end{verbatim}
+Sample EWMA plot	The control chart is given below.
+EWMA plot of above data
+\end{frame}
+%==================================================================== %
+\begin{frame}
+Interpretation of EWMA control chart	
+
+The red dots are the raw data; the jagged line is the EWMA statistic over time. The chart tells us that the process is in control because all EWMAt lie between the control limits. However, there seems to be a trend upwards for the last 5 periods.
+\end{frame}
+\end{document}
